@@ -93,24 +93,24 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
 
   MissionControlTitle() {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.decelerate,
       height: widget._height / 10,
       width: widget._width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: widget._incidentsIsSelected
             ? Colors.pink
-            : Color.fromRGBO(0, 255, 149, 1),
+            : const Color.fromRGBO(0, 255, 149, 1),
       ),
       child: Text(
         widget._incidentsIsSelected ? 'INCIDENTS' : 'MISSION CONTROL',
         textAlign: TextAlign.center,
         style: TextStyle(
             color: widget._incidentsIsSelected
-                ? Color.fromARGB(255, 88, 0, 29)
-                : Color.fromRGBO(0, 75, 44, 1),
+                ? const Color.fromARGB(255, 88, 0, 29)
+                : const Color.fromRGBO(0, 75, 44, 1),
             fontFamily: 'Poppins-Bold',
             fontSize: widget._height / 18),
       ),
@@ -138,7 +138,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
               'Security Posture',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 fontFamily: 'Poppins-Bold',
                 fontSize: widget._width / 90,
               ),
@@ -153,7 +153,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
               'Key Indicators',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 fontFamily: 'Poppins-Bold',
                 fontSize: widget._width / 125,
               ),
@@ -163,11 +163,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
           //color: Colors.red,
           Theme(
             data: ThemeData(
-              scrollbarTheme: ScrollbarThemeData(
+              scrollbarTheme: const ScrollbarThemeData(
                 thumbColor:
                     MaterialStatePropertyAll(Color.fromARGB(33, 0, 0, 0)),
                 thickness: MaterialStatePropertyAll(5),
-                thumbVisibility: const MaterialStatePropertyAll(false),
+                thumbVisibility: MaterialStatePropertyAll(false),
               ),
             ),
             child: Expanded(
@@ -181,7 +181,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 1,
                         secondaryNumber: -15.0,
                         state: false),
-                    Divider(),
+                    const Divider(),
                     SizedBox(
                       height: widget._height / 30,
                     ),
@@ -192,7 +192,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 2,
                         secondaryNumber: -103.0,
                         state: false),
-                    Divider(),
+                    const Divider(),
                     SizedBox(
                       height: widget._height / 30,
                     ),
@@ -203,7 +203,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 15,
                         secondaryNumber: -13.0,
                         state: false),
-                    Divider(),
+                    const Divider(),
                     SizedBox(
                       height: widget._height / 30,
                     ),
@@ -214,7 +214,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 0,
                         secondaryNumber: 4,
                         state: true),
-                    Divider(),
+                    const Divider(),
                     SizedBox(
                       height: widget._height / 30,
                     ),
@@ -225,7 +225,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 1,
                         secondaryNumber: -15.0,
                         state: false),
-                    Divider(),
+                    const Divider(),
                     SizedBox(
                       height: widget._height / 30,
                     ),
@@ -236,7 +236,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         principalNumber: 2,
                         secondaryNumber: -103.0,
                         state: false),
-                    Divider(),
+                    const Divider(),
                   ],
                 ),
               ),
@@ -269,7 +269,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 'Notable events by urgency',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   fontFamily: 'Poppins-Bold',
                   fontSize: widget._width / 90,
                 ),
@@ -313,7 +313,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 'Notable events over time',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   fontFamily: 'Poppins-Bold',
                   fontSize: widget._width / 90,
                 ),
@@ -347,7 +347,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 //color: Colors.red,
                 width: widget._width,
                 height: widget._height / 15,
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: LineChart(
                   charts.tertiaryChart(),
                 ),
@@ -362,8 +362,8 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                   style: TextStyle(
                       fontSize: widget._height / 50,
                       color: State == 'Neutralized'
-                          ? Color.fromARGB(255, 2, 241, 109)
-                          : Color.fromARGB(255, 255, 15, 67),
+                          ? const Color.fromARGB(255, 2, 241, 109)
+                          : const Color.fromARGB(255, 255, 15, 67),
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -376,7 +376,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 //color: Colors.red,
                 width: widget._width,
                 height: widget._height / 15,
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: LineChart(
                   charts.tertiaryChart(),
                 ),
@@ -391,15 +391,15 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                   style: TextStyle(
                       fontSize: widget._height / 50,
                       color: State == 'Neutralized'
-                          ? Color.fromARGB(255, 2, 241, 109)
-                          : Color.fromARGB(255, 255, 15, 67),
+                          ? const Color.fromARGB(255, 2, 241, 109)
+                          : const Color.fromARGB(255, 255, 15, 67),
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 width: 10,
                 //color: Colors.red,
-                margin: EdgeInsets.all(11),
+                margin: const EdgeInsets.all(11),
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -408,7 +408,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
 
                     //print(ManageRedirect);
                   },
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       overlayColor: MaterialStatePropertyAll(
                           Color.fromARGB(255, 0, 108, 122)),
                       backgroundColor:
@@ -417,7 +417,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     'Examine',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                         fontSize: widget._width / 125),
                   ),
@@ -449,7 +449,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 'Top Notable Events',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   fontFamily: 'Poppins-Bold',
                   fontSize: widget._width / 90,
                 ),
@@ -461,11 +461,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
             Expanded(
               child: Theme(
                 data: ThemeData(
-                  scrollbarTheme: ScrollbarThemeData(
+                  scrollbarTheme: const ScrollbarThemeData(
                     thumbColor:
                         MaterialStatePropertyAll(Color.fromARGB(61, 0, 0, 0)),
                     thickness: MaterialStatePropertyAll(5),
-                    thumbVisibility: const MaterialStatePropertyAll(true),
+                    thumbVisibility: MaterialStatePropertyAll(true),
                   ),
                 ),
                 child: SingleChildScrollView(
@@ -481,11 +481,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                       defaultVerticalAlignment:
                           TableCellVerticalAlignment.middle,
                       columnWidths: {
-                        0: FlexColumnWidth(2),
-                        1: FlexColumnWidth(5),
-                        2: FlexColumnWidth(2.5),
-                        3: FlexColumnWidth(1.5),
-                        4: FlexColumnWidth(1.5),
+                        0: const FlexColumnWidth(2),
+                        1: const FlexColumnWidth(5),
+                        2: const FlexColumnWidth(2.5),
+                        3: const FlexColumnWidth(1.5),
+                        4: const FlexColumnWidth(1.5),
                       },
                       children: [
                         TableRow(
@@ -557,7 +557,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
               'Top Notable Events',
               textAlign: TextAlign.start,
               style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 fontFamily: 'Poppins-Bold',
                 fontSize: widget._width / 90,
               ),
@@ -569,11 +569,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
           Expanded(
             child: Theme(
               data: ThemeData(
-                scrollbarTheme: ScrollbarThemeData(
+                scrollbarTheme: const ScrollbarThemeData(
                   thumbColor:
                       MaterialStatePropertyAll(Color.fromARGB(61, 0, 0, 0)),
                   thickness: MaterialStatePropertyAll(5),
-                  thumbVisibility: const MaterialStatePropertyAll(true),
+                  thumbVisibility: MaterialStatePropertyAll(true),
                 ),
               ),
               child: SingleChildScrollView(
@@ -588,11 +588,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     ),
                     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                     columnWidths: {
-                      0: FlexColumnWidth(2),
-                      1: FlexColumnWidth(5),
-                      2: FlexColumnWidth(2.5),
-                      3: FlexColumnWidth(1.5),
-                      4: FlexColumnWidth(1.5),
+                      0: const FlexColumnWidth(2),
+                      1: const FlexColumnWidth(5),
+                      2: const FlexColumnWidth(2.5),
+                      3: const FlexColumnWidth(1.5),
+                      4: const FlexColumnWidth(1.5),
                     },
                     children: [
                       TableRow(
@@ -668,7 +668,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 'Top Notable Events',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   fontFamily: 'Poppins-Bold',
                   fontSize: widget._width / 90,
                 ),
@@ -690,30 +690,6 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
   bool container2Pressed = false;
   bool container3Hover = false;
   bool container3Pressed = false;
-
-  bool downloadCSV = false;
-
-  late ConfettiController _centerController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // initialize confettiController
-    _centerController =
-        ConfettiController(duration: const Duration(seconds: 5));
-  }
-
-  @override
-  void dispose() {
-    // dispose the controller
-    _centerController.dispose();
-    super.dispose();
-  }
-
-  static openNewTab(String setUrl) {
-    return html.window.open(setUrl, 'Download');
-  }
 
   //List contenedores = [];
   double progress = 0;
@@ -742,7 +718,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
               flex: 1,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 75, 75, 75),
+                  color: const Color.fromARGB(255, 75, 75, 75),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.all(widget._height / 80),
@@ -753,7 +729,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                       incidentDetails = !incidentDetails;
                     });
                   },
-                  icon: Icon(Icons.arrow_back_ios_new_rounded),
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded),
                   color: Colors.white,
                 ),
               ),
@@ -766,364 +742,332 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
               child: Container(
                 width: widget._width,
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.symmetric(
-                  horizontal: widget._width / 100,
-                  vertical: widget._height / 50,
-                ),
+                padding: EdgeInsets.only(
+                    right: widget._width / 100,
+                    left: widget._width / 50,
+                    top: widget._height / 50,
+                    bottom: widget._height / 50),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 75, 75, 75),
+                  color: const Color.fromARGB(255, 75, 75, 75),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: SingleChildScrollView(
-                  reverse: true,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Incident information',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: widget._width / 60,
+                child: Theme(
+                  data: ThemeData(
+                    scrollbarTheme: ScrollbarThemeData(
+                      thumbVisibility: MaterialStatePropertyAll(true),
+                      thumbColor: MaterialStatePropertyAll(Color.fromARGB(255, 58, 58, 58))
+                    )
+                  ),
+                  child: SingleChildScrollView(
+                    reverse: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Incident information',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: widget._width / 60,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: widget._height / 40),
-                      Text(
-                        'Name',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: widget._width / 70,
+                        SizedBox(height: widget._height / 40),
+                        Text(
+                          'Name',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: widget._width / 70,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: widget._height / 200,
-                      ),
-                      Text(
-                        'Threat Activity Detected',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins',
-                          fontSize: widget._width / 90,
+                        SizedBox(
+                          height: widget._height / 200,
                         ),
-                      ),
-                      SizedBox(height: widget._height / 40),
-                      Text(
-                        'Description',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: widget._width / 70,
+                        Text(
+                          'Threat Activity Detected',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins',
+                            fontSize: widget._width / 90,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: widget._height / 200,
-                      ),
-                      Text(
-                        'Suspicious or potentially harmful activity has been detected, indicating a security threat',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins',
-                          fontSize: widget._width / 90,
+                        SizedBox(height: widget._height / 40),
+                        Text(
+                          'Description',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: widget._width / 70,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: widget._height / 40),
-                      Text(
-                        'Number Id',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: widget._width / 70,
+                        SizedBox(
+                          height: widget._height / 200,
                         ),
-                      ),
-                      SizedBox(
-                        height: widget._height / 200,
-                      ),
-                      Text(
-                        '54SD-65DE54R-001',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins',
-                          fontSize: widget._width / 90,
+                        Text(
+                          'Suspicious or potentially harmful activity has been detected, indicating a security threat',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins',
+                            fontSize: widget._width / 90,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: widget._height / 40),
-                      Text(
-                        'Category',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: widget._width / 70,
+                        SizedBox(height: widget._height / 40),
+                        Text(
+                          'Number Id',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: widget._width / 70,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: widget._height / 200,
-                      ),
-                      Text(
-                        'Endpoint',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'Poppins',
-                          fontSize: widget._width / 90,
+                        SizedBox(
+                          height: widget._height / 200,
                         ),
-                      ),
-                      SizedBox(
-                        height: widget._height / 40,
-                      ),
-                      container1Pressed
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''Step 1, contain''',
-                                      textAlign: TextAlign.start,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins-Bold',
-                                        fontSize: widget._width / 70,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: widget._height / 200,
-                                ),
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''- Blocking compromised user accounts.
-
-- Implementation of traffic filters to stop denial of service (DDoS) attacks.
-
-- Quarantine of systems infected by malware.
-
-- Restriction of external data transfer.
-
-- Audit of permissions and security settings.
-
-- Password reset for all users.
-
-- Continuous monitoring of suspicious traffic.
-
-- Comprehensive analysis of access logs to identify the origin of the attack.
-
-- Implementation of additional firewall rules to strengthen network security.
-
-- Scanning and cleaning malware infected files.''',
-                                      textAlign: TextAlign.start,
-                                      speed: Duration(milliseconds: 5),
-                                      curve: Curves.linear,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins',
-                                        fontSize: widget._width / 90,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )
-                          : Container(),
-                      container2Pressed
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: widget._height / 40,
-                                ),
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''Step 2, eradicate''',
-                                      textAlign: TextAlign.start,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins-Bold',
-                                        fontSize: widget._width / 70,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: widget._height / 200,
-                                ),
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''- Complete removal of malicious files and processes.
-
-- Identification and closure of vulnerabilities exploited by the attacker.
-
-- Security patches and software updates.
-
-- Comprehensive review of network and systems configurations.
-
-- Full systems scan for possible attacker persistence points.''',
-                                      textAlign: TextAlign.start,
-                                      speed: Duration(milliseconds: 5),
-                                      curve: Curves.linear,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins',
-                                        fontSize: widget._width / 90,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )
-                          : Container(),
-                      container3Pressed
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: widget._height / 40,
-                                ),
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''Step 3, recover''',
-                                      textAlign: TextAlign.start,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins-Bold',
-                                        fontSize: widget._width / 70,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: widget._height / 200,
-                                ),
-                                AnimatedTextKit(
-                                  repeatForever: false,
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TyperAnimatedText(
-                                      '''- Automatic system restore from virtual machine snapshots.
-
-- Review and update of cloud security policies.
-
-- Implementation of continuous monitoring of data and systems integrity.
-
-- Generation of detailed incident reports and automated forensic analysis.
-
-- Automatic notification to administrators and incident response teams.
-
-- Automation of restoration procedures for critical systems.
-
-- Continuous vulnerability scanning and automated risk assessments.
-
-- Automatic implementation of risk mitigation measures in real time.
-
-- Integration of alerts and notifications in real time through secure communication channels.''',
-                                      textAlign: TextAlign.start,
-                                      speed: Duration(milliseconds: 5),
-                                      curve: Curves.linear,
-                                      textStyle: TextStyle(
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                        fontFamily: 'Poppins',
-                                        fontSize: widget._width / 90,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          : Container(),
-                      container1Pressed &&
-                              container2Pressed &&
-                              container3Pressed
-                          ? Column(
-                              children: [
-                                SizedBox(
-                                  height: widget._height / 40,
-                                ),
-                                AnimatedOpacity(
-                                  duration: Duration(milliseconds: 250),
-                                  opacity: container1Pressed &&
-                                          container2Pressed &&
-                                          container3Pressed
-                                      ? 1
-                                      : 0,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    //color: Color.fromARGB(255, 244, 54, 219),
-                                    width: widget._width,
-                                    child: InkWell(
-                                      onHover: (value) {
-                                        setState(() {
-                                          downloadCSV = !downloadCSV;
-                                        });
-                                      },
-                                      onTap: () {
-                                        openNewTab(
-                                            'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
-                                      },
-                                      child: AnimatedContainer(
-                                        duration:
-                                            const Duration(milliseconds: 400),
-                                        curve: Curves.decelerate,
-                                        width: widget._width,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: downloadCSV
-                                                ? Color.fromARGB(
-                                                    255, 206, 206, 206)
-                                                : Color.fromARGB(
-                                                    255, 255, 255, 255)),
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: widget._width / 80,
-                                              vertical: widget._height / 100),
-                                          child: Text(
-                                            'Download incident report',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: 'Poppins',
-                                              fontWeight: FontWeight.w900,
-                                              fontSize: widget._height / 40,
-                                            ),
-                                          ),
+                        Text(
+                          '54SD-65DE54R-001',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins',
+                            fontSize: widget._width / 90,
+                          ),
+                        ),
+                        SizedBox(height: widget._height / 40),
+                        Text(
+                          'Category',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins-Bold',
+                            fontSize: widget._width / 70,
+                          ),
+                        ),
+                        SizedBox(
+                          height: widget._height / 200,
+                        ),
+                        Text(
+                          'Endpoint',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins',
+                            fontSize: widget._width / 90,
+                          ),
+                        ),
+                        SizedBox(
+                          height: widget._height / 40,
+                        ),
+                        container1Pressed
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AnimatedTextKit(
+                                    repeatForever: false,
+                                    totalRepeatCount: 1,
+                                    animatedTexts: [
+                                      TyperAnimatedText(
+                                        '''1. CONTAIN''',
+                                        textAlign: TextAlign.start,
+                                        textStyle: TextStyle(
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontFamily: 'Poppins-Bold',
+                                          fontSize: widget._width / 70,
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ),
-                              ],
-                            )
-                          : Container()
-                    ],
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Network Segmentation',
+                                    description:
+                                        'Implement network segmentation to isolate critical systems and contain the spread of security threats.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Isolation of Compromised Devices',
+                                    description:
+                                        'Isolate compromised devices from the network to prevent further spread of security threats.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Suspension of User Accounts',
+                                    description:
+                                        'Temporarily suspend user accounts associated with security incidents to contain potential risks.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Application Quarantine Measures',
+                                    description:
+                                        'Implement quarantine measures for affected applications to prevent them from causing further harm.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Traffic Filtering and Monitoring',
+                                    description:
+                                        'Enhance traffic filtering and monitoring mechanisms to quickly identify and contain suspicious network activities.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                
+                //
+                                ],
+                              )
+                            : Container(),
+                        container2Pressed
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: widget._height / 40,
+                                  ),
+                                  AnimatedTextKit(
+                                    repeatForever: false,
+                                    totalRepeatCount: 1,
+                                    animatedTexts: [
+                                      TyperAnimatedText(
+                                        '''2. ERADICATE''',
+                                        textAlign: TextAlign.start,
+                                        textStyle: TextStyle(
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontFamily: 'Poppins-Bold',
+                                          fontSize: widget._width / 70,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Enhanced Firewall Protection',
+                                    description:
+                                        'Upgrade and configure firewalls to provide enhanced protection against cyber threats.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title:
+                                        'Implementation of Intrusion Detection Systems',
+                                    description:
+                                        'Deploy Intrusion Detection Systems to identify and respond to potential security breaches.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Isolation of Compromised Devices',
+                                    description:
+                                        'Isolate compromised devices from the network to prevent further threats and attacks.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Data Encryption Protocols',
+                                    description:
+                                        'Implement strong data encryption protocols to safeguard sensitive information.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Regular Security Audits',
+                                    description:
+                                        'Conduct regular security audits to identify and address potential vulnerabilities.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                        container3Pressed
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: widget._height / 40,
+                                  ),
+                                  AnimatedTextKit(
+                                    repeatForever: false,
+                                    totalRepeatCount: 1,
+                                    animatedTexts: [
+                                      TyperAnimatedText(
+                                        '''3. RECOVER''',
+                                        textAlign: TextAlign.start,
+                                        textStyle: TextStyle(
+                                          color: const Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontFamily: 'Poppins-Bold',
+                                          fontSize: widget._width / 70,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Data Backup and Recovery Plan',
+                                    description:
+                                        'Establish a comprehensive data backup and recovery plan to minimize data loss in case of a security incident.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Incident Response Team Activation',
+                                    description:
+                                        'Activate an incident response team to quickly respond to and mitigate the impact of security incidents.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'System Restoration Protocols',
+                                    description:
+                                        'Implement protocols for the systematic restoration of systems and services affected by security incidents.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title:
+                                        'Communication and Notification Procedures',
+                                    description:
+                                        'Establish communication and notification procedures to keep stakeholders informed during the recovery process.',
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Post-Incident Analysis',
+                                    description:
+                                        'Conduct a thorough analysis of security incidents to identify lessons learned and improve future incident response.',
+                                        lastfield: true,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                ],
+                              )
+                            : Container(),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -1142,7 +1086,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     top: widget._height / 50,
                     bottom: widget._height / 50),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 75, 75, 75),
+                  color: const Color.fromARGB(255, 75, 75, 75),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -1154,14 +1098,18 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         'Implement countermeasures to mitigate risk',
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'Poppins-Bold',
                           fontSize: widget._width / 60,
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: widget._height / 50, right: widget._height / 40, top: widget._height / 50, bottom: widget._height / 70),
+                      margin: EdgeInsets.only(
+                          left: widget._height / 50,
+                          right: widget._height / 40,
+                          top: widget._height / 50,
+                          bottom: widget._height / 70),
                       child: AnimatedProgressIndicator(
                         progress: progress,
                       ),
@@ -1174,7 +1122,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                             Expanded(
                               flex: 1,
                               child: AnimatedContainer(
-                                duration: Duration(milliseconds: 250),
+                                duration: const Duration(milliseconds: 250),
                                 width: widget._width,
                                 height: widget._height,
                                 // color: const Color.fromARGB(
@@ -1208,138 +1156,14 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                           container1Pressed ? false : true;
                                     });
                                     updateProgressIndicator(container1Pressed);
-
-                                    if (container1Pressed &&
-                                        container2Pressed &&
-                                        container3Pressed) {
-                                      Future.delayed(
-                                        Duration(milliseconds: 3800),
-                                        () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                backgroundColor:
-                                                    const Color.fromARGB(
-                                                        255, 49, 49, 49),
-                                                title: Text(
-                                                  'Threat successfully eradicated!',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Poppins',
-                                                    fontWeight: FontWeight.w900,
-                                                    fontSize:
-                                                        widget._width / 50,
-                                                  ),
-                                                ),
-                                                content: Container(
-                                                  height: widget._height / 4.6,
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        '11 users',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully blocked',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height:
-                                                            widget._height / 50,
-                                                      ),
-                                                      Text(
-                                                        '191 shares',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully arrested',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  FilledButton.tonal(
-                                                    style: ButtonStyle(
-                                                      overlayColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  108,
-                                                                  122)),
-                                                      backgroundColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  87,
-                                                                  99)),
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                      'Accept',
-                                                      style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 255, 255, 255),
-                                                        fontFamily: 'Poppins',
-                                                        fontSize:
-                                                            widget._width / 80,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          _centerController.play();
-                                        },
-                                      );
-                                    }
                                   },
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 250),
+                                    duration: const Duration(milliseconds: 250),
                                     decoration: BoxDecoration(
                                       color: container1Pressed
-                                          ? Color.fromRGBO(0, 255, 149, 1)
-                                          : Color.fromARGB(255, 255, 69, 109),
+                                          ? const Color.fromRGBO(0, 255, 149, 1)
+                                          : const Color.fromARGB(
+                                              255, 255, 69, 109),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: LayoutBuilder(
@@ -1365,7 +1189,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                             Expanded(
                               flex: 1,
                               child: AnimatedContainer(
-                                duration: Duration(milliseconds: 250),
+                                duration: const Duration(milliseconds: 250),
                                 width: widget._width,
                                 height: widget._height,
                                 // color: const Color.fromARGB(
@@ -1397,138 +1221,14 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                     });
 
                                     updateProgressIndicator(container2Pressed);
-
-                                    if (container1Pressed &&
-                                        container2Pressed &&
-                                        container3Pressed) {
-                                      Future.delayed(
-                                        Duration(milliseconds: 3800),
-                                        () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                backgroundColor:
-                                                    const Color.fromARGB(
-                                                        255, 49, 49, 49),
-                                                title: Text(
-                                                  'Threat successfully eradicated!',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Poppins',
-                                                    fontWeight: FontWeight.w900,
-                                                    fontSize:
-                                                        widget._width / 50,
-                                                  ),
-                                                ),
-                                                content: Container(
-                                                  height: widget._height / 4.6,
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        '11 users',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully blocked',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height:
-                                                            widget._height / 50,
-                                                      ),
-                                                      Text(
-                                                        '191 shares',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully arrested',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  FilledButton.tonal(
-                                                    style: ButtonStyle(
-                                                      overlayColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  108,
-                                                                  122)),
-                                                      backgroundColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  87,
-                                                                  99)),
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                      'Accept',
-                                                      style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 255, 255, 255),
-                                                        fontFamily: 'Poppins',
-                                                        fontSize:
-                                                            widget._width / 80,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          _centerController.play();
-                                        },
-                                      );
-                                    }
                                   },
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 250),
+                                    duration: const Duration(milliseconds: 250),
                                     decoration: BoxDecoration(
                                       color: container2Pressed
-                                          ? Color.fromRGBO(0, 255, 149, 1)
-                                          : Color.fromARGB(255, 255, 69, 109),
+                                          ? const Color.fromRGBO(0, 255, 149, 1)
+                                          : const Color.fromARGB(
+                                              255, 255, 69, 109),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: LayoutBuilder(
@@ -1553,7 +1253,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                             Expanded(
                               flex: 1,
                               child: AnimatedContainer(
-                                duration: Duration(milliseconds: 250),
+                                duration: const Duration(milliseconds: 250),
                                 width: widget._width,
                                 height: widget._height,
                                 // color: const Color.fromARGB(
@@ -1585,139 +1285,14 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                     });
 
                                     updateProgressIndicator(container3Pressed);
-
-                                    if (container1Pressed &&
-                                        container2Pressed &&
-                                        container3Pressed) {
-                                      Future.delayed(
-                                        Duration(milliseconds: 3800),
-                                        () {
-                                          
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                backgroundColor:
-                                                    const Color.fromARGB(
-                                                        255, 49, 49, 49),
-                                                title: Text(
-                                                  'Threat successfully eradicated!',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontFamily: 'Poppins',
-                                                    fontWeight: FontWeight.w900,
-                                                    fontSize:
-                                                        widget._width / 50,
-                                                  ),
-                                                ),
-                                                content: Container(
-                                                  height: widget._height / 4.6,
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        '11 users',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully blocked',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height:
-                                                            widget._height / 50,
-                                                      ),
-                                                      Text(
-                                                        '191 shares',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize:
-                                                                widget._width /
-                                                                    50,
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    199,
-                                                                    116)),
-                                                      ),
-                                                      Text(
-                                                        'Successfully arrested',
-                                                        style: TextStyle(
-                                                          fontSize:
-                                                              widget._width /
-                                                                  70,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                actions: [
-                                                  FilledButton.tonal(
-                                                    style: ButtonStyle(
-                                                      overlayColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  108,
-                                                                  122)),
-                                                      backgroundColor:
-                                                          MaterialStatePropertyAll(
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  0,
-                                                                  87,
-                                                                  99)),
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                      'Accept',
-                                                      style: TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 255, 255, 255),
-                                                        fontFamily: 'Poppins',
-                                                        fontSize:
-                                                            widget._width / 80,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                          _centerController.play();
-                                        },
-                                      );
-                                    }
                                   },
                                   child: AnimatedContainer(
-                                    duration: Duration(milliseconds: 250),
+                                    duration: const Duration(milliseconds: 250),
                                     decoration: BoxDecoration(
                                       color: container3Pressed
-                                          ? Color.fromRGBO(0, 255, 149, 1)
-                                          : Color.fromARGB(255, 255, 69, 109),
+                                          ? const Color.fromRGBO(0, 255, 149, 1)
+                                          : const Color.fromARGB(
+                                              255, 255, 69, 109),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: LayoutBuilder(
@@ -1836,22 +1411,243 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 getActualPage(),
               ],
             ),
-            Align(
-              alignment: Alignment.center,
-              child: ConfettiWidget(
-                confettiController: _centerController,
-                blastDirection: 180,
-                maxBlastForce: 5,
-                minBlastForce: 1,
-                emissionFrequency: 0.001,
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-                // 10 paticles will pop-up at a time
-                numberOfParticles: 5,
+class CheckBoxAction extends StatefulWidget {
+  const CheckBoxAction({
+    required this.title,
+    required this.description,
+    this.lastfield = false,
+    super.key,
+  });
 
-                // particles will pop-up
-                gravity: 0,
-              ),
+  final bool lastfield;
+  final String title;
+  final String description;
+
+  @override
+  State<CheckBoxAction> createState() => _CheckBoxActionState();
+}
+
+class _CheckBoxActionState extends State<CheckBoxAction> {
+  bool active = false;
+
+  late ConfettiController _centerController;
+  bool downloadCSV = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // initialize confettiController
+    _centerController =
+        ConfettiController(duration: const Duration(seconds: 5));
+  }
+
+  @override
+  void dispose() {
+    // dispose the controller
+    _centerController.dispose();
+    super.dispose();
+  }
+
+  static openNewTab(String setUrl) {
+    return html.window.open(setUrl, 'Download');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: const Color.fromARGB(255, 70, 70, 70),
+      ),
+      margin: const EdgeInsets.only(right: 27),
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.title,
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontFamily: 'Poppins-Bold',
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                Checkbox(
+                  fillColor: const MaterialStatePropertyAll(Colors.transparent),
+                  checkColor: const Color.fromARGB(255, 0, 199, 7),
+                  overlayColor: const MaterialStatePropertyAll(
+                      Color.fromARGB(28, 0, 0, 0)),
+                  side: const BorderSide(
+                      width: 2, color: Color.fromARGB(255, 214, 54, 102)),
+                  value: active,
+                  onChanged: (value) {
+                    setState(() {
+                      active = !active;
+                    });
+
+                    if (widget.lastfield) {
+                      if (active) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              backgroundColor:
+                                  const Color.fromARGB(255, 49, 49, 49),
+                              title: const Text(
+                                'Threat successfully eradicated!',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 35,
+                                ),
+                              ),
+                              content: Container(
+                                height: 170,
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: ConfettiWidget(
+                                        confettiController: _centerController,
+                                        blastDirection: 180,
+                                        maxBlastForce: 5,
+                                        minBlastForce: 1,
+                                        emissionFrequency: 0.001,
+
+                                        // 10 paticles will pop-up at a time
+                                        numberOfParticles: 5,
+
+                                        // particles will pop-up
+                                        gravity: 0,
+                                      ),
+                                    ),
+                                    const Text(
+                                      '11 users',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                          color:
+                                              Color.fromARGB(255, 0, 199, 116)),
+                                    ),
+                                    const Text(
+                                      'Successfully blocked',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        color: Color.fromARGB(255, 0, 199, 116),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Text(
+                                      '191 shares',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                          color:
+                                              Color.fromARGB(255, 0, 199, 116)),
+                                    ),
+                                    const Text(
+                                      'Successfully arrested',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        color: Color.fromARGB(255, 0, 199, 116),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              actions: [
+                                FilledButton.tonal(
+                                  style: const ButtonStyle(
+                                    overlayColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 255, 255, 255)),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 224, 224, 224)),
+                                  ),
+                                  onPressed: () {
+                                    openNewTab(
+                                        'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                  },
+                                  child: const Text(
+                                    'Download incident report',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                                FilledButton.tonal(
+                                  style: const ButtonStyle(
+                                    overlayColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 0, 108, 122)),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 0, 87, 99)),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Accept',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      fontFamily: 'Poppins',
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+
+                      _centerController.play();
+                    }
+                  },
+                ),
+              ],
             ),
+            active
+                ? Container(
+                    color: const Color.fromARGB(255, 70, 70, 70),
+                    alignment: Alignment.centerLeft,
+                    child: AnimatedTextKit(
+                      repeatForever: false,
+                      totalRepeatCount: 1,
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          widget.description,
+                          textAlign: TextAlign.start,
+                          speed: const Duration(milliseconds: 20),
+                          curve: Curves.linear,
+                          textStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'Poppins',
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container()
           ],
         ),
       ),
@@ -1887,15 +1683,21 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
     );
     final colorTween = TweenSequence([
       TweenSequenceItem(
-        tween: ColorTween(begin: const Color.fromARGB(255, 244, 54, 86), end: Color.fromARGB(255, 255, 123, 0)),
+        tween: ColorTween(
+            begin: const Color.fromARGB(255, 244, 54, 86),
+            end: const Color.fromARGB(255, 255, 123, 0)),
         weight: 1,
       ),
       TweenSequenceItem(
-        tween: ColorTween(begin: const Color.fromARGB(255, 255, 123, 0), end: Color.fromARGB(255, 251, 255, 0)),
+        tween: ColorTween(
+            begin: const Color.fromARGB(255, 255, 123, 0),
+            end: const Color.fromARGB(255, 251, 255, 0)),
         weight: 1,
       ),
       TweenSequenceItem(
-        tween: ColorTween(begin: const Color.fromARGB(255, 251, 255, 0), end: Color.fromARGB(255, 1, 255, 107)),
+        tween: ColorTween(
+            begin: const Color.fromARGB(255, 251, 255, 0),
+            end: const Color.fromARGB(255, 1, 255, 107)),
         weight: 1,
       ),
     ]);
@@ -1952,12 +1754,12 @@ class CreateIncidentButton extends StatelessWidget {
           Positioned(
               right: 1,
               child: containerIsPressed
-                  ? Icon(
+                  ? const Icon(
                       Icons.check,
                       size: 30,
                       color: Color.fromARGB(255, 0, 100, 50),
                     )
-                  : Icon(
+                  : const Icon(
                       Icons.warning_amber_rounded,
                       size: 30,
                       color: Color.fromARGB(255, 100, 0, 13),
@@ -1975,8 +1777,8 @@ class CreateIncidentButton extends StatelessWidget {
                     icon,
                     size: height / 1.2,
                     color: containerIsPressed
-                        ? Color.fromRGBO(0, 97, 57, 1)
-                        : Color.fromARGB(255, 104, 0, 22),
+                        ? const Color.fromRGBO(0, 97, 57, 1)
+                        : const Color.fromARGB(255, 104, 0, 22),
                   ),
                 ),
               ),
@@ -1992,29 +1794,22 @@ class CreateIncidentButton extends StatelessWidget {
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               color: containerIsPressed
-                                  ? Color.fromRGBO(0, 97, 57, 1)
-                                  : Color.fromARGB(255, 104, 0, 22),
+                                  ? const Color.fromRGBO(0, 97, 57, 1)
+                                  : const Color.fromARGB(255, 104, 0, 22),
                               fontFamily: 'Poppins-Bold',
                               fontSize: width / 35,
                             ),
                           ),
-                          AnimatedTextKit(
-                            repeatForever: false,
-                            totalRepeatCount: 1,
-                            animatedTexts: [
-                              TypewriterAnimatedText(
-                                description,
-                                speed: const Duration(milliseconds: 20),
-                                textStyle: TextStyle(
-                                  color: containerIsPressed
-                                      ? Color.fromRGBO(0, 97, 57, 1)
-                                      : Color.fromARGB(255, 65, 0, 14),
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: width / 47,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            description,
+                            style: TextStyle(
+                              color: containerIsPressed
+                                  ? const Color.fromRGBO(0, 97, 57, 1)
+                                  : const Color.fromARGB(255, 65, 0, 14),
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w900,
+                              fontSize: width / 47,
+                            ),
                           ),
                         ],
                       )
@@ -2023,8 +1818,8 @@ class CreateIncidentButton extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: containerIsPressed
-                              ? Color.fromRGBO(0, 97, 57, 1)
-                              : Color.fromARGB(255, 104, 0, 22),
+                              ? const Color.fromRGBO(0, 97, 57, 1)
+                              : const Color.fromARGB(255, 104, 0, 22),
                           fontFamily: 'Poppins-Bold',
                           fontSize: width / 25,
                         ),
@@ -2102,7 +1897,7 @@ class KeyIndicator extends StatelessWidget {
           Text(
             _title,
             style: TextStyle(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               fontFamily: 'Poppins-Bold',
               fontSize: _width / 125,
             ),
@@ -2112,7 +1907,7 @@ class KeyIndicator extends StatelessWidget {
               Text(
                 '$_principalNumber.0',
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   fontFamily: 'Poppins-Bold',
                   fontSize: _height / 25,
                 ),
@@ -2134,8 +1929,8 @@ class KeyIndicator extends StatelessWidget {
                   '$_secondaryNumber.0',
                   style: TextStyle(
                     color: _state
-                        ? Color.fromARGB(255, 244, 54, 86)
-                        : Color.fromARGB(255, 54, 244, 117),
+                        ? const Color.fromARGB(255, 244, 54, 86)
+                        : const Color.fromARGB(255, 54, 244, 117),
                     fontFamily: 'Poppins-Bold',
                     fontSize: _height / 50,
                   ),
@@ -2189,7 +1984,7 @@ class _AccountSectionState extends State<AccountSection> {
           child: Container(
             //color: Color.fromARGB(255, 75, 75, 75),
             width: widget._width,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Column(
@@ -2198,8 +1993,8 @@ class _AccountSectionState extends State<AccountSection> {
                       //color: Colors.red,
                       width: widget._width,
                       height: widget._height / 10,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: CircleAvatar(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: const CircleAvatar(
                         backgroundImage:
                             AssetImage('resources/images/avatar.png'),
                         backgroundColor: Colors.white,
@@ -2208,23 +2003,23 @@ class _AccountSectionState extends State<AccountSection> {
                     Container(
                       width: widget._width,
                       //color: Colors.cyan,
-                      margin: EdgeInsets.symmetric(vertical: 20),
+                      margin: const EdgeInsets.symmetric(vertical: 20),
                       child: Text(
                         'Ingeniero #0231',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             fontWeight: FontWeight.bold,
                             fontSize: widget._width / 125),
                       ),
                     ),
                   ],
                 ),
-                Divider(),
+                const Divider(),
                 Container(
                   width: widget._width,
                   //color: Colors.cyan,
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -2234,16 +2029,16 @@ class _AccountSectionState extends State<AccountSection> {
                       });
                     },
                     style: ButtonStyle(
-                        overlayColor: MaterialStatePropertyAll(
+                        overlayColor: const MaterialStatePropertyAll(
                             Color.fromARGB(255, 0, 108, 122)),
                         backgroundColor: MaterialStatePropertyAll(isSelected1
-                            ? Color.fromARGB(255, 0, 87, 99)
+                            ? const Color.fromARGB(255, 0, 87, 99)
                             : Colors.transparent)),
                     child: Text(
                       'Mision Control',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
                           fontSize: widget._width / 125),
                     ),
@@ -2252,7 +2047,7 @@ class _AccountSectionState extends State<AccountSection> {
                 Container(
                   width: widget._width,
                   //color: Colors.cyan,
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -2262,16 +2057,16 @@ class _AccountSectionState extends State<AccountSection> {
                       });
                     },
                     style: ButtonStyle(
-                        overlayColor: MaterialStatePropertyAll(
+                        overlayColor: const MaterialStatePropertyAll(
                             Color.fromARGB(255, 0, 108, 122)),
                         backgroundColor: MaterialStatePropertyAll(isSelected2
-                            ? Color.fromARGB(255, 0, 87, 99)
+                            ? const Color.fromARGB(255, 0, 87, 99)
                             : Colors.transparent)),
                     child: Text(
                       'Incidents',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
                           fontSize: widget._width / 125),
                     ),
@@ -2280,7 +2075,7 @@ class _AccountSectionState extends State<AccountSection> {
                 Container(
                   width: widget._width,
                   //color: Colors.cyan,
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
@@ -2288,7 +2083,7 @@ class _AccountSectionState extends State<AccountSection> {
                         '/home',
                       );
                     },
-                    style: ButtonStyle(
+                    style: const ButtonStyle(
                         overlayColor: MaterialStatePropertyAll(
                             Color.fromARGB(255, 122, 0, 30)),
                         backgroundColor:
@@ -2297,7 +2092,7 @@ class _AccountSectionState extends State<AccountSection> {
                       'Log out',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
                           fontSize: widget._width / 125),
                     ),
