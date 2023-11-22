@@ -711,11 +711,19 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
     super.dispose();
   }
 
-   static openNewTab(String setUrl) {
-    return html.window.open(
-      setUrl,
-      'Download'
-    );
+  static openNewTab(String setUrl) {
+    return html.window.open(setUrl, 'Download');
+  }
+
+  //List contenedores = [];
+  double progress = 0;
+
+  updateProgressIndicator(containerPressed) {
+    if (containerPressed) {
+      progress = progress + 1 / 3;
+    } else {
+      progress = progress - 1 / 3;
+    }
   }
 
   panel6() {
@@ -1077,7 +1085,8 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                         });
                                       },
                                       onTap: () {
-                                        openNewTab('https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                        openNewTab(
+                                            'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
                                       },
                                       child: AnimatedContainer(
                                         duration:
@@ -1151,6 +1160,12 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         ),
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(left: widget._height / 50, right: widget._height / 40, top: widget._height / 50, bottom: widget._height / 70),
+                      child: AnimatedProgressIndicator(
+                        progress: progress,
+                      ),
+                    ),
                     Expanded(
                       child: Container(
                         //color: Colors.cyan,
@@ -1191,118 +1206,133 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                     setState(() {
                                       container1Pressed =
                                           container1Pressed ? false : true;
+                                    });
+                                    updateProgressIndicator(container1Pressed);
 
-                                      if (container1Pressed &&
-                                          container2Pressed &&
-                                          container3Pressed) {
-                                        Future.delayed(
-                                          Duration(milliseconds: 3800),
-                                          () {
-                                            showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  backgroundColor:
-                                                      const Color.fromARGB(
-                                                          255, 49, 49, 49),
-                                                  title: Text(
-                                                    'Threat successfully eradicated!',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                      fontSize:
-                                                          widget._width / 50,
-                                                    ),
+                                    if (container1Pressed &&
+                                        container2Pressed &&
+                                        container3Pressed) {
+                                      Future.delayed(
+                                        Duration(milliseconds: 3800),
+                                        () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 49, 49, 49),
+                                                title: Text(
+                                                  'Threat successfully eradicated!',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w900,
+                                                    fontSize:
+                                                        widget._width / 50,
                                                   ),
-                                                  content: Container(
-                                                    height: widget._height/4.6,
-                                                    child: Column(
-                                                      children: [
-                                                        Text(
-                                                      '11 users',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully blocked',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                        SizedBox(height: widget._height/50,),
-                                                        Text(
-                                                      '191 shares',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully arrested',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  actions: [
-                                                    FilledButton.tonal(
-                                                      style: ButtonStyle(
-                                                        overlayColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    108,
-                                                                    122)),
-                                                        backgroundColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    87,
-                                                                    99)),
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                        'Accept',
+                                                ),
+                                                content: Container(
+                                                  height: widget._height / 4.6,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        '11 users',
                                                         style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontFamily: 'Poppins',
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully blocked',
+                                                        style: TextStyle(
                                                           fontSize:
                                                               widget._width /
-                                                                  80,
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
                                                         ),
                                                       ),
+                                                      SizedBox(
+                                                        height:
+                                                            widget._height / 50,
+                                                      ),
+                                                      Text(
+                                                        '191 shares',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully arrested',
+                                                        style: TextStyle(
+                                                          fontSize:
+                                                              widget._width /
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  FilledButton.tonal(
+                                                    style: ButtonStyle(
+                                                      overlayColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  108,
+                                                                  122)),
+                                                      backgroundColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  87,
+                                                                  99)),
                                                     ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            _centerController.play();
-                                          },
-                                        );
-                                      }
-                                    });
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'Accept',
+                                                      style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 255, 255, 255),
+                                                        fontFamily: 'Poppins',
+                                                        fontSize:
+                                                            widget._width / 80,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          _centerController.play();
+                                        },
+                                      );
+                                    }
                                   },
                                   child: AnimatedContainer(
                                     duration: Duration(milliseconds: 250),
@@ -1366,6 +1396,8 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                           container2Pressed ? false : true;
                                     });
 
+                                    updateProgressIndicator(container2Pressed);
+
                                     if (container1Pressed &&
                                         container2Pressed &&
                                         container3Pressed) {
@@ -1373,105 +1405,119 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                         Duration(milliseconds: 3800),
                                         () {
                                           showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  backgroundColor:
-                                                      const Color.fromARGB(
-                                                          255, 49, 49, 49),
-                                                  title: Text(
-                                                    'Threat successfully eradicated!',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                      fontSize:
-                                                          widget._width / 50,
-                                                    ),
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 49, 49, 49),
+                                                title: Text(
+                                                  'Threat successfully eradicated!',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w900,
+                                                    fontSize:
+                                                        widget._width / 50,
                                                   ),
-                                                  content: Container(
-                                                    height: widget._height/4.6,
-                                                    child: Column(
-                                                      children: [
-                                                        Text(
-                                                      '11 users',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully blocked',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                        SizedBox(height: widget._height/50,),
-                                                        Text(
-                                                      '191 shares',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully arrested',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  actions: [
-                                                    FilledButton.tonal(
-                                                      style: ButtonStyle(
-                                                        overlayColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    108,
-                                                                    122)),
-                                                        backgroundColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    87,
-                                                                    99)),
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                        'Accept',
+                                                ),
+                                                content: Container(
+                                                  height: widget._height / 4.6,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        '11 users',
                                                         style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontFamily: 'Poppins',
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully blocked',
+                                                        style: TextStyle(
                                                           fontSize:
                                                               widget._width /
-                                                                  80,
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
                                                         ),
                                                       ),
+                                                      SizedBox(
+                                                        height:
+                                                            widget._height / 50,
+                                                      ),
+                                                      Text(
+                                                        '191 shares',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully arrested',
+                                                        style: TextStyle(
+                                                          fontSize:
+                                                              widget._width /
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  FilledButton.tonal(
+                                                    style: ButtonStyle(
+                                                      overlayColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  108,
+                                                                  122)),
+                                                      backgroundColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  87,
+                                                                  99)),
                                                     ),
-                                                  ],
-                                                );
-                                              },
-                                            );
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'Accept',
+                                                      style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 255, 255, 255),
+                                                        fontFamily: 'Poppins',
+                                                        fontSize:
+                                                            widget._width / 80,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
                                           _centerController.play();
                                         },
                                       );
@@ -1538,112 +1584,129 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                           container3Pressed ? false : true;
                                     });
 
+                                    updateProgressIndicator(container3Pressed);
+
                                     if (container1Pressed &&
                                         container2Pressed &&
                                         container3Pressed) {
                                       Future.delayed(
                                         Duration(milliseconds: 3800),
                                         () {
+                                          
                                           showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  backgroundColor:
-                                                      const Color.fromARGB(
-                                                          255, 49, 49, 49),
-                                                  title: Text(
-                                                    'Threat successfully eradicated!',
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: 'Poppins',
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                      fontSize:
-                                                          widget._width / 50,
-                                                    ),
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                backgroundColor:
+                                                    const Color.fromARGB(
+                                                        255, 49, 49, 49),
+                                                title: Text(
+                                                  'Threat successfully eradicated!',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w900,
+                                                    fontSize:
+                                                        widget._width / 50,
                                                   ),
-                                                  content: Container(
-                                                    height: widget._height/4.6,
-                                                    child: Column(
-                                                      children: [
-                                                        Text(
-                                                      '11 users',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully blocked',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                        SizedBox(height: widget._height/50,),
-                                                        Text(
-                                                      '191 shares',
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                          fontSize:
-                                                              widget._width / 50,
-                                                          color: Color.fromARGB(
-                                                              255, 0, 199, 116)),
-                                                    ),
-                                                        Text(
-                                                          'Successfully arrested',
-                                                          style: TextStyle(
-                                                              fontSize:
-                                                                  widget._width / 70,
-                                                              color: Color.fromARGB(
-                                                                  255, 0, 199, 116),),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  actions: [
-                                                    FilledButton.tonal(
-                                                      style: ButtonStyle(
-                                                        overlayColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    108,
-                                                                    122)),
-                                                        backgroundColor:
-                                                            MaterialStatePropertyAll(
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    0,
-                                                                    87,
-                                                                    99)),
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                        'Accept',
+                                                ),
+                                                content: Container(
+                                                  height: widget._height / 4.6,
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        '11 users',
                                                         style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255),
-                                                          fontFamily: 'Poppins',
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully blocked',
+                                                        style: TextStyle(
                                                           fontSize:
                                                               widget._width /
-                                                                  80,
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
                                                         ),
                                                       ),
+                                                      SizedBox(
+                                                        height:
+                                                            widget._height / 50,
+                                                      ),
+                                                      Text(
+                                                        '191 shares',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize:
+                                                                widget._width /
+                                                                    50,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    0,
+                                                                    199,
+                                                                    116)),
+                                                      ),
+                                                      Text(
+                                                        'Successfully arrested',
+                                                        style: TextStyle(
+                                                          fontSize:
+                                                              widget._width /
+                                                                  70,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 199, 116),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  FilledButton.tonal(
+                                                    style: ButtonStyle(
+                                                      overlayColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  108,
+                                                                  122)),
+                                                      backgroundColor:
+                                                          MaterialStatePropertyAll(
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  0,
+                                                                  87,
+                                                                  99)),
                                                     ),
-                                                  ],
-                                                );
-                                              },
-                                            );
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      'Accept',
+                                                      style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 255, 255, 255),
+                                                        fontFamily: 'Poppins',
+                                                        fontSize:
+                                                            widget._width / 80,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
                                           _centerController.play();
                                         },
                                       );
@@ -1791,6 +1854,72 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AnimatedProgressIndicator extends StatefulWidget {
+  const AnimatedProgressIndicator({
+    super.key,
+    required this.progress,
+  });
+
+  final double progress;
+
+  @override
+  State<AnimatedProgressIndicator> createState() =>
+      _AnimatedProgressIndicatorState();
+}
+
+class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorAnimation;
+  late Animation<double> _curveAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    );
+    final colorTween = TweenSequence([
+      TweenSequenceItem(
+        tween: ColorTween(begin: const Color.fromARGB(255, 244, 54, 86), end: Color.fromARGB(255, 255, 123, 0)),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: ColorTween(begin: const Color.fromARGB(255, 255, 123, 0), end: Color.fromARGB(255, 251, 255, 0)),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: ColorTween(begin: const Color.fromARGB(255, 251, 255, 0), end: Color.fromARGB(255, 1, 255, 107)),
+        weight: 1,
+      ),
+    ]);
+
+    _colorAnimation = _controller.drive(colorTween);
+    _curveAnimation = _controller.drive(CurveTween(curve: Curves.linear));
+  }
+
+  @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    _controller.animateTo(widget.progress);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) => LinearProgressIndicator(
+        minHeight: 5,
+        value: _curveAnimation.value,
+        valueColor: _colorAnimation,
+        backgroundColor: _colorAnimation.value?.withOpacity(0.4),
       ),
     );
   }
