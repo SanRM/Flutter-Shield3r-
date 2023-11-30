@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           buildBody(),
-          StaticAppBar(width: _width, height: _height),
+          StaticAppBar(width: _width, height: _height, showOtherOptions: false),
         ],
       ),
     );
@@ -209,7 +209,7 @@ class _AccessButtonState extends State<AccessButton> {
                       ),
                       Text(
                         textAlign: TextAlign.center,
-                        'Ingresar',
+                        'Enter',
                         style: TextStyle(
                           color: access
                               ? const Color.fromARGB(255, 26, 26, 26)
@@ -282,7 +282,7 @@ class _TextFormFieldsState extends State<TextFormFields> {
                 },
 
                 decoration: InputDecoration(
-                  labelText: 'Usuario',
+                    labelText: 'Username',
                   labelStyle: const TextStyle(
                       color: Color.fromARGB(255, 26, 26, 26),
                       fontWeight: FontWeight.bold),
@@ -343,7 +343,7 @@ class _TextFormFieldsState extends State<TextFormFields> {
                 },
 
                 decoration: InputDecoration(
-                  labelText: 'Contraseña',
+                    labelText: 'Password',
                   labelStyle: const TextStyle(
                       color: Color.fromARGB(255, 26, 26, 26),
                       fontWeight: FontWeight.bold),
@@ -437,16 +437,15 @@ class LoginAppBar extends StatelessWidget {
             ),
           ),
           Container(
-            color: Colors.white,
+            //color: Colors.cyan,
             child: Column(
               children: [
                 SizedBox(
                   height: _height / 100,
                 ),
-                // ignore: avoid_unnecessary_containers
                 Container(
                   child: Text(
-                    'INICIAR SESIÓN',
+                    'SIGN IN',
                     style: TextStyle(
                       fontSize: _height / 15,
                       fontFamily: 'Poppins-Bold',
@@ -455,7 +454,7 @@ class LoginAppBar extends StatelessWidget {
                 ),
                 Container(
                   height: _height / 80,
-                  width: _width / 3.8,
+                  width: _width / 6,
                   color: const Color.fromARGB(255, 26, 26, 26),
                 )
               ],

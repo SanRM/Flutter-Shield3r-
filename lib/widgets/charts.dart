@@ -162,31 +162,31 @@ class AppCharts {
     Widget bottomTitleWidgets(double value, TitleMeta meta) {
       const style = TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 16,
+          fontSize: 13,
           color: Colors.white,
           fontFamily: 'Poppins-Bold');
       Widget text;
       switch (value.toInt()) {
         case 0:
-          text = const Text('MIN', style: style);
+          text = const Text('INFORMATIVE', style: style);
           break;
         case 1:
           text = const Text('LOW', style: style);
           break;
         case 2:
-          text = const Text('MED', style: style);
+          text = const Text('MEDIUM', style: style);
           break;
         case 3:
-          text = const Text('ELEV', style: style);
-          break;
-        case 4:
           text = const Text('HIGH', style: style);
           break;
-        case 5:
-          text = const Text('SEV', style: style);
-          break;
+        // case 4:
+        //   text = const Text('HIGH', style: style);
+        //   break;
+        // case 5:
+        //   text = const Text('SEV', style: style);
+        //   break;
         default:
-          text = const Text('UNK', style: style);
+          text = const Text('CRITICAL', style: style);
           break;
       }
 
@@ -336,31 +336,31 @@ class AppCharts {
                 borderRadius: BorderRadius.circular(4))
           ],
         ),
-        BarChartGroupData(
-          x: 5,
-          barRods: [
-            BarChartRodData(
-                toY: 3.5,
-                gradient: _barsGradient(),
-                width: 20,
-                borderRadius: BorderRadius.circular(4))
-          ],
-        ),
-        BarChartGroupData(
-          x: 6,
-          barRods: [
-            BarChartRodData(
-                toY: 2.5,
-                gradient: _barsGradient(),
-                width: 20,
-                borderRadius: BorderRadius.circular(4))
-          ],
-        ),
+        // BarChartGroupData(
+        //   x: 5,
+        //   barRods: [
+        //     BarChartRodData(
+        //         toY: 3.5,
+        //         gradient: _barsGradient(),
+        //         width: 20,
+        //         borderRadius: BorderRadius.circular(4))
+        //   ],
+        // ),
+        // BarChartGroupData(
+        //   x: 6,
+        //   barRods: [
+        //     BarChartRodData(
+        //         toY: 2.5,
+        //         gradient: _barsGradient(),
+        //         width: 20,
+        //         borderRadius: BorderRadius.circular(4))
+        //   ],
+        // ),
       ],
     );
   }
 
-  LineChartData tertiaryChart() {
+  LineChartData tertiaryChart(num1, num2, num3, num4, num5, num6, num7, num8, num9, num10, num11, num12) {
     List<Color> gradientColors = [
       Color.fromRGBO(Random().nextInt(50), 255, 128, 1),
       Color.fromRGBO(Random().nextInt(100), 255, 128, 1),
@@ -458,18 +458,18 @@ class AppCharts {
       lineBarsData: [
         LineChartBarData(
           spots: [
-            FlSpot(0, Random().nextInt(5).toDouble()),
-            FlSpot(1, Random().nextInt(10).toDouble()),
-            FlSpot(2, Random().nextInt(5).toDouble()),
-            FlSpot(3, Random().nextInt(5).toDouble()),
-            FlSpot(4, Random().nextInt(10).toDouble()),
-            FlSpot(5, Random().nextInt(5).toDouble()),
-            FlSpot(6, Random().nextInt(10).toDouble()),
-            FlSpot(7, Random().nextInt(5).toDouble()),
-            FlSpot(8, Random().nextInt(10).toDouble()),
-            FlSpot(9, Random().nextInt(5).toDouble()),
-            FlSpot(10, Random().nextInt(10).toDouble()),
-            FlSpot(11, Random().nextInt(5).toDouble()),
+            FlSpot(0, num1),
+            FlSpot(1, num2),
+            FlSpot(2, num3),
+            FlSpot(3, num4),
+            FlSpot(4, num5),
+            FlSpot(5, num6),
+            FlSpot(6, num7),
+            FlSpot(7, num8),
+            FlSpot(8, num9),
+            FlSpot(9, num10),
+            FlSpot(10, num11),
+            FlSpot(11, num12),
           ],
           isCurved: true,
           curveSmoothness: 0.1,
@@ -493,4 +493,6 @@ class AppCharts {
       ],
     );
   }
+
+
 }

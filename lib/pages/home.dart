@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 //import 'package:shield3r/principal_page/principal_page_body.dart';
 import 'package:shield3r/widgets/responsive.dart';
+import 'dart:js' as js;
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -56,39 +57,8 @@ class _HomeState extends State<Home> {
   logo() {
     return Image.asset(
       'resources/images/logo.png',
-      height: _height / 10,
     );
   }
-
-  // createTextBlock(text, container, containerIsSelected) {
-
-  //   return InkWell(
-  //     onHover: (value) {
-  //       print('hola');
-  //       setState(
-  //         () {
-  //           containerSelected = containerSelected == false ? true : false;
-  //         },
-  //       );
-  //     },
-  //     onTap: () {
-  //       print('a');
-  //     },
-  //     child: AnimatedOpacity(
-  //         opacity: container,
-  //         duration: const Duration(seconds: 1),
-  //         curve: Curves.fastLinearToSlowEaseIn,
-  //         child: Container(
-  //           decoration: BoxDecoration(
-  //             borderRadius: BorderRadius.circular(10),
-  //             color: Colors.blue,
-  //           ),
-  //           width: containerSelected ? _width / 4 : _width / 4.1,
-  //           height: _height,
-  //         ),
-  //       ),
-  //   );
-  // }
 
   createCard(opacity, text) {
     return AnimatedOpacity(
@@ -121,38 +91,40 @@ class _HomeState extends State<Home> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        // InkWell(
+        //   onTap: () {},
+        //   child: Text(
+        //     'Mission Control',
+        //     style: TextStyle(color: Colors.white, fontSize: _height / 40),
+        //   ),
+        // ),
+        // SizedBox(
+        //   width: _width / 50,
+        // ),
+        // InkWell(
+        //   onTap: () {},
+        //   child: Text(
+        //     'Incidents',
+        //     style: TextStyle(color: Colors.white, fontSize: _height / 40),
+        //   ),
+        // ),
+        // SizedBox(
+        //   width: _width / 50,
+        // ),
+        // InkWell(
+        //   onTap: () {},
+        //   child: Text(
+        //     'Documentation',
+        //     style: TextStyle(color: Colors.white, fontSize: _height / 40),
+        //   ),
+        // ),
+        // SizedBox(
+        //   width: _width / 50,
+        // ),
         InkWell(
-          onTap: () {},
-          child: Text(
-            'Mission Control',
-            style: TextStyle(color: Colors.white, fontSize: _height / 40),
-          ),
-        ),
-        SizedBox(
-          width: _width / 50,
-        ),
-        InkWell(
-          onTap: () {},
-          child: Text(
-            'Incidents',
-            style: TextStyle(color: Colors.white, fontSize: _height / 40),
-          ),
-        ),
-        SizedBox(
-          width: _width / 50,
-        ),
-        InkWell(
-          onTap: () {},
-          child: Text(
-            'Documentation',
-            style: TextStyle(color: Colors.white, fontSize: _height / 40),
-          ),
-        ),
-        SizedBox(
-          width: _width / 50,
-        ),
-        InkWell(
-          onTap: () {},
+          onTap: () {
+            js.context.callMethod('open', ['https://www.a3sec.com/']);
+          },
           child: Text(
             'A3Sec',
             style: TextStyle(color: Colors.white, fontSize: _height / 40),
@@ -225,7 +197,7 @@ class _HomeState extends State<Home> {
                           totalRepeatCount: 1,
                           animatedTexts: [
                             TypewriterAnimatedText(
-                              'CIBERSEGURIDAD NATIVA EN LA NUBE',
+                              'NATIVE CLOUD CYBERSECURITY',
                               cursor: '',
                               speed: const Duration(milliseconds: 100),
                               curve: Easing.legacyDecelerate,
@@ -256,7 +228,7 @@ class _HomeState extends State<Home> {
                           totalRepeatCount: 1,
                           animatedTexts: [
                             TypewriterAnimatedText(
-                                'Respuesta automatizada para proteger tus activos digitales.',
+                                'Automated response to protect your digital assets.',
                                 speed: const Duration(milliseconds: 40)),
                           ],
                         ),
@@ -297,7 +269,7 @@ class _HomeState extends State<Home> {
                                 horizontal: _width / 80,
                                 vertical: _height / 100),
                             child: Text(
-                              'Inicio rápido',
+                              'Quick Start',
                               style: TextStyle(
                                 color: quickStart ? const Color.fromRGBO(5, 54, 39, 1) : const Color.fromRGBO(17, 211, 149, 1),
                                 fontFamily: 'Poppins',
@@ -392,12 +364,9 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    createCard(_container1Opacity,
-                        'Integración de herramientas y automatización'),
-                    createCard(_container2Opacity,
-                        'Optimización del conocimiento y del tiempo'),
-                    createCard(_container3Opacity,
-                        'Recopilación de datos relevantes para el análisis de eventos'),
+                    createCard(_container1Opacity, 'Integration of tools and automation'),
+                    createCard(_container2Opacity, 'Optimization of knowledge and time'),
+                    createCard(_container3Opacity, 'Collection of relevant data for event analysis'),
                   ],
                 ),
               ),
@@ -444,7 +413,9 @@ class _HomeState extends State<Home> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            logo(),
+            Container(
+              child: logo(),
+            ),
             navigationButtons(),
           ],
         ),

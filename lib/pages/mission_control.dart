@@ -4,6 +4,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:confetti/confetti.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:shield3r/cubits/cubits.dart';
+import 'package:shield3r/cubits/page_change_manager/page_change_manager_cubit.dart';
 import 'package:shield3r/widgets/charts.dart';
 import 'package:shield3r/widgets/responsive.dart';
 import 'package:shield3r/widgets/static_app_bar.dart';
@@ -33,7 +37,7 @@ class _MissionControlState extends State<MissionControl> {
             width: _width,
           ),
           PrincipalBoard(height: _height, width: _width),
-          StaticAppBar(width: _width, height: _height),
+          StaticAppBar(width: _width, height: _height, showOtherOptions: true),
         ],
       ),
     );
@@ -69,18 +73,18 @@ class PrincipalBoard extends StatelessWidget {
 }
 
 class MissionControlPanel extends StatefulWidget {
-  const MissionControlPanel(
-      {super.key,
-      required double width,
-      required double height,
-      required bool incidentsIsSelected})
-      : _width = width,
-        _height = height,
-        _incidentsIsSelected = incidentsIsSelected;
+  const MissionControlPanel({
+    super.key,
+    required double width,
+    required double height,
+    //required bool incidentsIsSelected
+  })  : _width = width,
+        _height = height;
+  //_incidentsIsSelected = incidentsIsSelected;
 
   final double _width;
   final double _height;
-  final bool _incidentsIsSelected;
+  //final bool _incidentsIsSelected;
 
   @override
   State<MissionControlPanel> createState() => _MissionControlPanelState();
@@ -90,6 +94,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
   final AppCharts charts = AppCharts();
 
   bool incidentDetails = false;
+  //final incidentDetails = context.watch<PageChangeManagerCubit>().state;
 
   MissionControlTitle() {
     return AnimatedContainer(
@@ -100,15 +105,17 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
-        color: widget._incidentsIsSelected
+        color: context.watch<PageChangeManagerCubit>().state
             ? Colors.pink
             : const Color.fromRGBO(0, 255, 149, 1),
       ),
       child: Text(
-        widget._incidentsIsSelected ? 'INCIDENTS' : 'MISSION CONTROL',
+        context.watch<PageChangeManagerCubit>().state == true
+            ? 'INCIDENTS'
+            : 'MISSION CONTROL',
         textAlign: TextAlign.center,
         style: TextStyle(
-            color: widget._incidentsIsSelected
+            color: context.watch<PageChangeManagerCubit>().state
                 ? const Color.fromARGB(255, 88, 0, 29)
                 : const Color.fromRGBO(0, 75, 44, 1),
             fontFamily: 'Poppins-Bold',
@@ -170,7 +177,9 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 thumbVisibility: MaterialStatePropertyAll(false),
               ),
             ),
-            child: Expanded(
+            child: Container(
+              width: widget._width,
+              height: widget._height / 1.95,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -337,207 +346,95 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
     );
   }
 
-  tableItem(
-      version, ruleName, Sparkline, incidentNumber, State, ManageRedirect) {
-    return version == 1
-        ? TableRow(
-            children: [
-              TableText(height: widget._height, text: ruleName),
-              Container(
-                //color: Colors.red,
-                width: widget._width,
-                height: widget._height / 15,
-                margin: const EdgeInsets.all(20),
-                child: LineChart(
-                  charts.tertiaryChart(),
-                ),
-              ),
-              TableText(height: widget._height, text: incidentNumber),
-              Container(
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                //color: Colors.red,
-                child: Text(
-                  State,
-                  style: TextStyle(
-                      fontSize: widget._height / 50,
-                      color: State == 'Neutralized'
-                          ? const Color.fromARGB(255, 2, 241, 109)
-                          : const Color.fromARGB(255, 255, 15, 67),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          )
-        : TableRow(
-            children: [
-              TableText(height: widget._height, text: ruleName),
-              Container(
-                //color: Colors.red,
-                width: widget._width,
-                height: widget._height / 15,
-                margin: const EdgeInsets.all(20),
-                child: LineChart(
-                  charts.tertiaryChart(),
-                ),
-              ),
-              TableText(height: widget._height, text: incidentNumber),
-              Container(
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                //color: Colors.red,
-                child: Text(
-                  State,
-                  style: TextStyle(
-                      fontSize: widget._height / 50,
-                      color: State == 'Neutralized'
-                          ? const Color.fromARGB(255, 2, 241, 109)
-                          : const Color.fromARGB(255, 255, 15, 67),
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                width: 10,
-                //color: Colors.red,
-                margin: const EdgeInsets.all(11),
-                child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      incidentDetails = incidentDetails == true ? false : true;
-                    });
+  tableItem(date, ruleName, Sparkline, incidentNumber, State, ManageRedirect,
+      num1, num2, num3, num4, num5, num6, num7, num8, num9, num10, num11, num12,
+      [buttonActive = false]) {
+    return TableRow(
+      children: [
+        TableText(height: widget._height, text: '$date'),
+        TableText(height: widget._height, text: ruleName),
+        Container(
+          //color: Colors.red,
+          width: widget._width,
+          height: widget._height / 15,
+          margin: const EdgeInsets.all(20),
+          child: LineChart(
+            charts.tertiaryChart(num1, num2, num3, num4, num5, num6, num7, num8,
+                num9, num10, num11, num12),
+          ),
+        ),
+        TableText(height: widget._height, text: incidentNumber),
+        // Container(
+        //   padding: const EdgeInsets.all(10),
+        //   alignment: Alignment.center,
+        //   //color: Colors.red,
+        //   child: Text(
+        //     State,
+        //     style: TextStyle(
+        //         fontSize: widget._height / 50,
+        //         color: State == 'Neutralized'
+        //             ? const Color.fromARGB(255, 2, 241, 109)
+        //             : const Color.fromARGB(255, 255, 15, 67),
+        //         fontWeight: FontWeight.bold),
+        //   ),
+        // ),
+        Container(
+          width: 10,
+          //color: Colors.red,
+          margin: const EdgeInsets.all(11),
+          child: buttonActive
+              ? ElevatedButton(
+                  onPressed: buttonActive
+                      ? () {
+                          setState(() {
+                            incidentDetails = true;
+                            context
+                                .read<PageChangeManagerCubit>()
+                                .setPage(true);
+                            context
+                                .read<ButtonStateCubit>()
+                                .setIncidentsControlState(false);
+                            context
+                                .read<ButtonStateCubit>()
+                                .setMissionControlState(true);
+                          });
 
-                    //print(ManageRedirect);
-                  },
-                  style: const ButtonStyle(
+                          //print(ManageRedirect);
+                        }
+                      : () {},
+                  style: ButtonStyle(
                       overlayColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 0, 108, 122)),
+                          Color.fromARGB(19, 255, 0, 34)),
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.transparent)),
                   child: Text(
-                    'Examine',
+                    buttonActive ? 'Pending' : 'Neutralized',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.bold,
-                        fontSize: widget._width / 125),
+                        fontSize: widget._height / 50,
+                        color: State == 'Neutralized'
+                            ? const Color.fromARGB(255, 2, 241, 109)
+                            : Color.fromARGB(255, 255, 12, 65),
+                        fontWeight: FontWeight.bold),
                   ),
+                )
+              : Text(
+                  buttonActive ? 'Pending' : 'Neutralized',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: widget._height / 50,
+                      color: const Color.fromARGB(255, 2, 241, 109),
+                      fontWeight: FontWeight.bold),
                 ),
-              ),
-            ],
-          );
-  }
-
-  panel4() {
-    return Expanded(
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Color.fromARGB(255, 75, 75, 75),
         ),
-        padding: EdgeInsets.symmetric(
-          horizontal: widget._width / 100,
-          vertical: widget._height / 50,
-        ),
-        alignment: Alignment.centerLeft,
-        child: Column(
-          children: [
-            Container(
-              width: widget._width,
-              //color: const Color.fromARGB(255, 92, 0, 212),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Top Notable Events',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  fontFamily: 'Poppins-Bold',
-                  fontSize: widget._width / 90,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: widget._height / 100,
-            ),
-            Expanded(
-              child: Theme(
-                data: ThemeData(
-                  scrollbarTheme: const ScrollbarThemeData(
-                    thumbColor:
-                        MaterialStatePropertyAll(Color.fromARGB(61, 0, 0, 0)),
-                    thickness: MaterialStatePropertyAll(5),
-                    thumbVisibility: MaterialStatePropertyAll(true),
-                  ),
-                ),
-                child: SingleChildScrollView(
-                  child: Container(
-                    width: widget._width,
-                    //color: const Color.fromARGB(255, 92, 0, 212),
-                    child: Table(
-                      border: TableBorder.all(
-                        color: Colors.white,
-                        width: 2,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      defaultVerticalAlignment:
-                          TableCellVerticalAlignment.middle,
-                      columnWidths: {
-                        0: const FlexColumnWidth(2),
-                        1: const FlexColumnWidth(5),
-                        2: const FlexColumnWidth(2.5),
-                        3: const FlexColumnWidth(1.5),
-                        4: const FlexColumnWidth(1.5),
-                      },
-                      children: [
-                        TableRow(
-                          children: [
-                            TableText(
-                                height: widget._height,
-                                text: 'Rule name',
-                                textBold: true),
-                            TableText(
-                                height: widget._height,
-                                text: 'Sparkline',
-                                textBold: true),
-                            TableText(
-                                height: widget._height,
-                                text: 'Incidet number',
-                                textBold: true),
-                            TableText(
-                                height: widget._height,
-                                text: 'State',
-                                textBold: true),
-                          ],
-                        ),
-                        tableItem(1, 'Threat activity detected', 'a',
-                            '54SD-65DE54R-001', 'Neutralized', 'a'),
-                        tableItem(1, 'Intrusion Detection Warning', 'a',
-                            '78DF-23GH89Y-002', 'Not resolved', 'a'),
-                        tableItem(1, 'Unauthorized Access Attempt', 'a',
-                            '45JK-78BN32M-003', 'Neutralized', 'a'),
-                        tableItem(1, 'Data Exfiltration Detected', 'a',
-                            '90PL-12CV67B-004', 'Neutralized', 'a'),
-                        tableItem(1, 'Network Anomaly Detected', 'a',
-                            '23RT-56FG12H-005', 'Not resolved', 'a'),
-                        tableItem(1, 'Ransomware Activity Detected', 'a',
-                            '67XZ-89LK43Q-006', 'Neutralized', 'a'),
-                        tableItem(1, 'Botnet Activity Detected', 'a',
-                            '34VY-01NM76P-007', 'Neutralized', 'a'),
-                        tableItem(1, 'Brute Force Attack Alert', 'a',
-                            '89RF-45UI23O-008', 'Neutralized', 'a'),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 
-  panel4WithOutManage() {
+  panel4() {
     return Container(
+      width: widget._width,
+      height: widget._height / 3,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Color.fromARGB(255, 75, 75, 75),
@@ -588,15 +485,19 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     ),
                     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                     columnWidths: {
-                      0: const FlexColumnWidth(2),
-                      1: const FlexColumnWidth(5),
-                      2: const FlexColumnWidth(2.5),
-                      3: const FlexColumnWidth(1.5),
-                      4: const FlexColumnWidth(1.5),
+                      0: const FlexColumnWidth(1.5),
+                      1: const FlexColumnWidth(2),
+                      2: const FlexColumnWidth(5),
+                      3: const FlexColumnWidth(2.5),
+                      4: const FlexColumnWidth(1.7),
                     },
                     children: [
                       TableRow(
                         children: [
+                          TableText(
+                              height: widget._height,
+                              text: 'Date & Time',
+                              textBold: true),
                           TableText(
                               height: widget._height,
                               text: 'Rule name',
@@ -609,32 +510,173 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                               height: widget._height,
                               text: 'Incidet number',
                               textBold: true),
+                          // TableText(
+                          //     height: widget._height,
+                          //     text: 'State',
+                          //     textBold: true),
                           TableText(
                               height: widget._height,
                               text: 'State',
                               textBold: true),
-                          TableText(
-                              height: widget._height,
-                              text: 'Manage',
-                              textBold: true),
                         ],
                       ),
-                      tableItem(2, 'Intrusion Detection Warning', 'a',
-                          '78DF-23GH89Y-002', 'Neutralized', 'a'),
-                      tableItem(2, 'Threat activity detected', 'a',
-                          '54SD-65DE54R-001', 'Not resolved', 'a'),
-                      tableItem(2, 'Unauthorized Access Attempt', 'a',
-                          '45JK-78BN32M-003', 'Neutralized', 'a'),
-                      tableItem(2, 'Data Exfiltration Detected', 'a',
-                          '90PL-12CV67B-004', 'Neutralized', 'a'),
-                      tableItem(2, '2, Network Anomaly Detected', 'a',
-                          '23RT-56FG12H-005', 'Not resolved', 'a'),
-                      tableItem(2, 'Ransomware Activity Detected', 'a',
-                          '67XZ-89LK43Q-006', 'Neutralized', 'a'),
-                      tableItem(2, 'Botnet Activity Detected', 'a',
-                          '34VY-01NM76P-007', 'Neutralized', 'a'),
-                      tableItem(2, 'Brute Force Attack Alert', 'a',
-                          '89RF-45UI23O-008', 'Neutralized', 'a'),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(DateTime.now()),
+                        'Threat activity detected',
+                        'a',
+                        '54SD-65DE54R-001',
+                        'Pending',
+                        'a',
+                        1, 2, 2, 9, 3, 7, 4, 6, 2, 6, 11, 4,
+                        true, // Hora y fecha ficticia
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 5))),
+                        'Intrusion Detection Warning',
+                        'a',
+                        '78DF-23GH89Y-002',
+                        'Neutralized',
+                        'a',
+                        3,
+                        9,
+                        5,
+                        4,
+                        5,
+                        7,
+                        4,
+                        8,
+                        3,
+                        10,
+                        5,
+                        2,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 8))),
+                        'Unauthorized Access Attempt',
+                        'a',
+                        '45JK-78BN32M-003',
+                        'Neutralized',
+                        'a',
+                        4,
+                        8,
+                        3,
+                        9,
+                        4,
+                        6,
+                        0,
+                        5,
+                        9,
+                        10,
+                        3,
+                        6,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 10))),
+                        'Data Exfiltration Detected',
+                        'a',
+                        '90PL-12CV67B-004',
+                        'Neutralized',
+                        'a',
+                        5,
+                        7,
+                        2,
+                        4,
+                        9,
+                        6,
+                        9,
+                        8,
+                        9,
+                        9,
+                        11,
+                        7,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 15))),
+                        'Network Anomaly Detected',
+                        'a',
+                        '23RT-56FG12H-005',
+                        'Neutralized',
+                        'a',
+                        6,
+                        3,
+                        3,
+                        4,
+                        4,
+                        4,
+                        7,
+                        7,
+                        9,
+                        9,
+                        8,
+                        9,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 30))),
+                        'Ransomware Activity Detected',
+                        'a',
+                        '67XZ-89LK43Q-006',
+                        'Neutralized',
+                        'a',
+                        7,
+                        4,
+                        4,
+                        4,
+                        4,
+                        6,
+                        7,
+                        8,
+                        4,
+                        10,
+                        11,
+                        9,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(minutes: 35))),
+                        'Botnet Activity Detected',
+                        'a',
+                        '34VY-01NM76P-007',
+                        'Neutralized',
+                        'a',
+                        8,
+                        5,
+                        5,
+                        4,
+                        8,
+                        6,
+                        7,
+                        4,
+                        9,
+                        4,
+                        5,
+                        9,
+                      ),
+                      tableItem(
+                        DateFormat('M/d/y \n h:mm a').format(
+                            DateTime.now().subtract(Duration(hours: 2))),
+                        'Brute Force Attack Alert',
+                        'a',
+                        '89RF-45UI23O-008',
+                        'Neutralized',
+                        'a',
+                        9,
+                        6,
+                        8,
+                        9,
+                        4,
+                        0,
+                        4,
+                        8,
+                        9,
+                        10,
+                        11,
+                        3,
+                      )
                     ],
                   ),
                 ),
@@ -753,11 +795,10 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                 ),
                 child: Theme(
                   data: ThemeData(
-                    scrollbarTheme: ScrollbarThemeData(
-                      thumbVisibility: MaterialStatePropertyAll(true),
-                      thumbColor: MaterialStatePropertyAll(Color.fromARGB(255, 58, 58, 58))
-                    )
-                  ),
+                      scrollbarTheme: ScrollbarThemeData(
+                          thumbVisibility: MaterialStatePropertyAll(true),
+                          thumbColor: MaterialStatePropertyAll(
+                              Color.fromARGB(255, 58, 58, 58)))),
                   child: SingleChildScrollView(
                     reverse: true,
                     child: Column(
@@ -863,74 +904,6 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         SizedBox(
                           height: widget._height / 40,
                         ),
-                        container1Pressed
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AnimatedTextKit(
-                                    repeatForever: false,
-                                    totalRepeatCount: 1,
-                                    animatedTexts: [
-                                      TyperAnimatedText(
-                                        '''1. CONTAIN''',
-                                        textAlign: TextAlign.start,
-                                        textStyle: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          fontFamily: 'Poppins-Bold',
-                                          fontSize: widget._width / 70,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Network Segmentation',
-                                    description:
-                                        'Implement network segmentation to isolate critical systems and contain the spread of security threats.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Isolation of Compromised Devices',
-                                    description:
-                                        'Isolate compromised devices from the network to prevent further spread of security threats.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Suspension of User Accounts',
-                                    description:
-                                        'Temporarily suspend user accounts associated with security incidents to contain potential risks.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Application Quarantine Measures',
-                                    description:
-                                        'Implement quarantine measures for affected applications to prevent them from causing further harm.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Traffic Filtering and Monitoring',
-                                    description:
-                                        'Enhance traffic filtering and monitoring mechanisms to quickly identify and contain suspicious network activities.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                
-                //
-                                ],
-                              )
-                            : Container(),
                         container2Pressed
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1058,7 +1031,7 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                     title: 'Post-Incident Analysis',
                                     description:
                                         'Conduct a thorough analysis of security incidents to identify lessons learned and improve future incident response.',
-                                        lastfield: true,
+                                    lastfield: true,
                                   ),
                                   SizedBox(
                                     height: widget._height / 80,
@@ -1116,21 +1089,16 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     ),
                     Expanded(
                       child: Container(
-                        //color: Colors.cyan,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: AnimatedContainer(
+                        color: Colors.cyan,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
                                 width: widget._width,
-                                height: widget._height,
-                                // color: const Color.fromARGB(
-                                //   166,
-                                //   33,
-                                //   149,
-                                //   243,
-                                // ),
+                                height: container1Pressed
+                                    ? widget._height / 4
+                                    : widget._height / 10,
                                 padding: container1Hover
                                     ? EdgeInsets.symmetric(
                                         horizontal: widget._width / 150,
@@ -1140,55 +1108,97 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                         horizontal: widget._width / 100,
                                         vertical: widget._height / 50,
                                       ),
-                                child: InkWell(
-                                  onHover: (value) {
-                                    setState(() {
-                                      container1Hover =
-                                          container1Hover ? false : true;
-                                      //      print('container1Pressed: $container1Pressed');
-                                      // print('container2Pressed: $container2Pressed');
-                                      // print('container3Pressed $container3Pressed');
-                                    });
-                                  },
-                                  onTap: () {
-                                    setState(() {
-                                      container1Pressed =
-                                          container1Pressed ? false : true;
-                                    });
-                                    updateProgressIndicator(container1Pressed);
-                                  },
-                                  child: AnimatedContainer(
-                                    duration: const Duration(milliseconds: 250),
-                                    decoration: BoxDecoration(
-                                      color: container1Pressed
-                                          ? const Color.fromRGBO(0, 255, 149, 1)
-                                          : const Color.fromARGB(
-                                              255, 255, 69, 109),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: LayoutBuilder(
-                                      builder: (context, constraints) {
-                                        var h = constraints.maxHeight;
-                                        var w = constraints.maxWidth;
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 250),
+                                  decoration: BoxDecoration(
+                                    color: container1Pressed
+                                        ? const Color.fromRGBO(0, 255, 149, 1)
+                                        : const Color.fromARGB(
+                                            255, 255, 69, 109),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: LayoutBuilder(
+                                    builder: (context, constraints) {
+                                      var h = constraints.maxHeight;
+                                      var w = constraints.maxWidth;
 
-                                        return CreateIncidentButton(
-                                          height: h,
-                                          width: w,
-                                          containerIsPressed: container1Pressed,
-                                          title: 'CONTAIN',
-                                          icon: Icons.security_rounded,
-                                          description:
-                                              'Measures are being implemented to limit the spread and impact of the threat, restricting its scope within our systems and networks.',
-                                        );
-                                      },
-                                    ),
+                                      return CreateIncidentButton(
+                                        height: h,
+                                        width: w,
+                                        containerIsPressed: container1Pressed,
+                                        title: 'CONTAIN',
+                                        icon: Icons.security_rounded,
+                                        button: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              container1Pressed = container1Pressed ? false : true;
+                                            });
+                                            updateProgressIndicator(container1Pressed);
+                                          },
+                                          //icon: Icon(Icons.keyboard_arrow_down_sharp),
+                                          icon: Icon(Icons.delete),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+                                            CheckBoxAction(
+                                              title: 'Network Segmentation',
+                                              description:
+                                                  'Implement network segmentation to isolate critical systems and contain the spread of security threats.',
+                                            ),
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+                                            CheckBoxAction(
+                                              title:
+                                                  'Isolation of Compromised Devices',
+                                              description:
+                                                  'Isolate compromised devices from the network to prevent further spread of security threats.',
+                                            ),
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+                                            CheckBoxAction(
+                                              title:
+                                                  'Suspension of User Accounts',
+                                              description:
+                                                  'Temporarily suspend user accounts associated with security incidents to contain potential risks.',
+                                            ),
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+                                            CheckBoxAction(
+                                              title:
+                                                  'Application Quarantine Measures',
+                                              description:
+                                                  'Implement quarantine measures for affected applications to prevent them from causing further harm.',
+                                            ),
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+                                            CheckBoxAction(
+                                              title:
+                                                  'Traffic Filtering and Monitoring',
+                                              description:
+                                                  'Enhance traffic filtering and monitoring mechanisms to quickly identify and contain suspicious network activities.',
+                                            ),
+                                            SizedBox(
+                                              height: widget._height / 80,
+                                            ),
+
+                                            //
+                                          ],
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: AnimatedContainer(
+                              AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
                                 width: widget._width,
                                 height: widget._height,
@@ -1242,17 +1252,28 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                         containerIsPressed: container2Pressed,
                                         icon: Icons.delete,
                                         title: 'ERADICATE',
-                                        description:
-                                            'Actions are being taken to completely eliminate the threat and its effects, ensuring thorough cleansing and full restoration of the systems.',
+                                        button: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              container1Pressed =
+                                                  container1Pressed
+                                                      ? false
+                                                      : true;
+                                            });
+                                            updateProgressIndicator(
+                                                container1Pressed);
+                                          },
+                                          icon: Icon(Icons.delete),
+                                        ),
+                                        child: Text('data'),
+                                        // description:
+                                        //     'Actions are being taken to completely eliminate the threat and its effects, ensuring thorough cleansing and full restoration of the systems.',
                                       );
                                     }),
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: AnimatedContainer(
+                              AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
                                 width: widget._width,
                                 height: widget._height,
@@ -1306,16 +1327,30 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                           containerIsPressed: container3Pressed,
                                           icon: Icons.verified,
                                           title: 'RECOVER',
-                                          description:
-                                              'Affected systems and data are being restored, corrective measures implemented, and security strengthened.',
+                                          child: Text('data'),
+                                          button: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                container1Pressed =
+                                                    container1Pressed
+                                                        ? false
+                                                        : true;
+                                              });
+                                              updateProgressIndicator(
+                                                  container1Pressed);
+                                            },
+                                            icon: Icon(Icons.delete),
+                                          ),
+                                          // description:
+                                          //     'Affected systems and data are being restored, corrective measures implemented, and security strengthened.',
                                         );
                                       },
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -1330,13 +1365,13 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
   }
 
   getActualPage() {
-    if (widget._incidentsIsSelected) {
+    if (context.watch<PageChangeManagerCubit>().state) {
       return Expanded(
         child: Container(
           margin: EdgeInsets.only(top: widget._height / 40),
           width: widget._width,
           height: widget._height,
-          child: incidentDetails ? panel6() : panel4WithOutManage(),
+          child: incidentDetails ? panel6() : panel4(),
         ),
       );
     } else {
@@ -1734,15 +1769,17 @@ class CreateIncidentButton extends StatelessWidget {
       required this.width,
       required this.containerIsPressed,
       required this.title,
-      required this.description,
-      required this.icon});
+      required this.child,
+      required this.icon,
+      required this.button});
 
   final double height;
   final double width;
   final String title;
-  final String description;
+  final Widget child;
   final IconData icon;
   final bool containerIsPressed;
+  final Widget button;
 
   @override
   Widget build(BuildContext context) {
@@ -1800,17 +1837,7 @@ class CreateIncidentButton extends StatelessWidget {
                               fontSize: width / 35,
                             ),
                           ),
-                          Text(
-                            description,
-                            style: TextStyle(
-                              color: containerIsPressed
-                                  ? const Color.fromRGBO(0, 97, 57, 1)
-                                  : const Color.fromARGB(255, 65, 0, 14),
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w900,
-                              fontSize: width / 47,
-                            ),
-                          ),
+                          child
                         ],
                       )
                     : Text(
@@ -1825,6 +1852,7 @@ class CreateIncidentButton extends StatelessWidget {
                         ),
                       ),
               ),
+              button
             ],
           ),
         ],
@@ -1852,6 +1880,7 @@ class TableText extends StatelessWidget {
       //color: Colors.red,
       child: Text(
         text,
+        textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: height / 50,
             color: Colors.white,
@@ -1960,10 +1989,7 @@ class AccountSection extends StatefulWidget {
 }
 
 class _AccountSectionState extends State<AccountSection> {
-  bool isSelected1 = true;
-  bool isSelected2 = false;
-
-  bool incidentsIsSelected = false;
+  //bool incidentsIsSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -2023,15 +2049,22 @@ class _AccountSectionState extends State<AccountSection> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        isSelected2 = false;
-                        isSelected1 = true;
-                        incidentsIsSelected = false;
+                        context
+                            .read<ButtonStateCubit>()
+                            .setIncidentsControlState(true);
+                        context
+                            .read<ButtonStateCubit>()
+                            .setMissionControlState(false);
+                        context.read<PageChangeManagerCubit>().setPage(false);
                       });
                     },
                     style: ButtonStyle(
                         overlayColor: const MaterialStatePropertyAll(
                             Color.fromARGB(255, 0, 108, 122)),
-                        backgroundColor: MaterialStatePropertyAll(isSelected1
+                        backgroundColor: MaterialStatePropertyAll(context
+                                .watch<ButtonStateCubit>()
+                                .state
+                                .incidentsControlState
                             ? const Color.fromARGB(255, 0, 87, 99)
                             : Colors.transparent)),
                     child: Text(
@@ -2051,15 +2084,22 @@ class _AccountSectionState extends State<AccountSection> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        isSelected2 = true;
-                        isSelected1 = false;
-                        incidentsIsSelected = true;
+                        context
+                            .read<ButtonStateCubit>()
+                            .setIncidentsControlState(false);
+                        context
+                            .read<ButtonStateCubit>()
+                            .setMissionControlState(true);
+                        context.read<PageChangeManagerCubit>().setPage(true);
                       });
                     },
                     style: ButtonStyle(
                         overlayColor: const MaterialStatePropertyAll(
                             Color.fromARGB(255, 0, 108, 122)),
-                        backgroundColor: MaterialStatePropertyAll(isSelected2
+                        backgroundColor: MaterialStatePropertyAll(context
+                                .watch<ButtonStateCubit>()
+                                .state
+                                .missionControlState
                             ? const Color.fromARGB(255, 0, 87, 99)
                             : Colors.transparent)),
                     child: Text(
@@ -2106,10 +2146,8 @@ class _AccountSectionState extends State<AccountSection> {
         //     ? IncidentsControlPanel(
         //         width: widget._width, height: widget._height)
         //     : MissionControlPanel(height: widget._height, width: widget._width),
-        MissionControlPanel(
-            width: widget._width,
-            height: widget._height,
-            incidentsIsSelected: incidentsIsSelected)
+        MissionControlPanel(width: widget._width, height: widget._height)
+        //incidentsIsSelected: incidentsIsSelected)
       ],
     );
   }
