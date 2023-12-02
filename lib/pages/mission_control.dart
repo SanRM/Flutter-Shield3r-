@@ -2206,13 +2206,19 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                 ],
                               ),
 
-                              context.read<IncidentButtonsCubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished == true 
+                              
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    context.read<IncidentButtonsCubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished == true 
                               ?
                               Container(
                                 margin: EdgeInsets.only(
                                   left: widget._height / 25,
                                   right: widget._height / 40,
-                                  top: widget._height / 60,
+                                  top: widget._height / 40,
                                   bottom: widget._height / 60),
                                 width: double.infinity,
                                 child: FilledButton.tonal(
@@ -2239,11 +2245,6 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                                 ),
                               )
                               : Container()
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -2394,7 +2395,7 @@ class IncidentItem extends StatelessWidget {
           title: Container(
             //color: Colors.cyan,
             alignment: Alignment.centerLeft,
-            height: 70,
+            height: context.read<IncidentButtonsCubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished == true ? widget._height / 16 : widget._height / 11,
             child: Text(
               title,
               textAlign: TextAlign.start,
