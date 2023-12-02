@@ -12,6 +12,10 @@ import 'package:shield3r/widgets/charts.dart';
 import 'package:shield3r/widgets/responsive.dart';
 import 'package:shield3r/widgets/static_app_bar.dart';
 
+final controll1Container = ExpansionTileController();
+final controll2Container = ExpansionTileController();
+final controll3Container = ExpansionTileController();
+
 class MissionControl extends StatefulWidget {
   const MissionControl({super.key});
 
@@ -744,6 +748,10 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
     }
   }
 
+  static openNewTab(String setUrl) {
+    return html.window.open(setUrl, 'Download');
+  }
+
   panel6() {
     return Container(
       decoration: const BoxDecoration(
@@ -904,141 +912,6 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                         SizedBox(
                           height: widget._height / 40,
                         ),
-                        container2Pressed
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: widget._height / 40,
-                                  ),
-                                  AnimatedTextKit(
-                                    repeatForever: false,
-                                    totalRepeatCount: 1,
-                                    animatedTexts: [
-                                      TyperAnimatedText(
-                                        '''2. ERADICATE''',
-                                        textAlign: TextAlign.start,
-                                        textStyle: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          fontFamily: 'Poppins-Bold',
-                                          fontSize: widget._width / 70,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Enhanced Firewall Protection',
-                                    description:
-                                        'Upgrade and configure firewalls to provide enhanced protection against cyber threats.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title:
-                                        'Implementation of Intrusion Detection Systems',
-                                    description:
-                                        'Deploy Intrusion Detection Systems to identify and respond to potential security breaches.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Isolation of Compromised Devices',
-                                    description:
-                                        'Isolate compromised devices from the network to prevent further threats and attacks.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Data Encryption Protocols',
-                                    description:
-                                        'Implement strong data encryption protocols to safeguard sensitive information.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Regular Security Audits',
-                                    description:
-                                        'Conduct regular security audits to identify and address potential vulnerabilities.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                ],
-                              )
-                            : Container(),
-                        container3Pressed
-                            ? Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: widget._height / 40,
-                                  ),
-                                  AnimatedTextKit(
-                                    repeatForever: false,
-                                    totalRepeatCount: 1,
-                                    animatedTexts: [
-                                      TyperAnimatedText(
-                                        '''3. RECOVER''',
-                                        textAlign: TextAlign.start,
-                                        textStyle: TextStyle(
-                                          color: const Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          fontFamily: 'Poppins-Bold',
-                                          fontSize: widget._width / 70,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Data Backup and Recovery Plan',
-                                    description:
-                                        'Establish a comprehensive data backup and recovery plan to minimize data loss in case of a security incident.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Incident Response Team Activation',
-                                    description:
-                                        'Activate an incident response team to quickly respond to and mitigate the impact of security incidents.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'System Restoration Protocols',
-                                    description:
-                                        'Implement protocols for the systematic restoration of systems and services affected by security incidents.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title:
-                                        'Communication and Notification Procedures',
-                                    description:
-                                        'Establish communication and notification procedures to keep stakeholders informed during the recovery process.',
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                  CheckBoxAction(
-                                    title: 'Post-Incident Analysis',
-                                    description:
-                                        'Conduct a thorough analysis of security incidents to identify lessons learned and improve future incident response.',
-                                    lastfield: true,
-                                  ),
-                                  SizedBox(
-                                    height: widget._height / 80,
-                                  ),
-                                ],
-                              )
-                            : Container(),
                       ],
                     ),
                   ),
@@ -1066,7 +939,11 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: widget._height / 50),
+                      margin: EdgeInsets.only(
+                          left: widget._height / 25,
+                          right: widget._height / 40,
+                          //top: widget._height / 100,
+                          bottom: widget._height / 100),
                       child: Text(
                         'Implement countermeasures to mitigate risk',
                         textAlign: TextAlign.start,
@@ -1079,276 +956,1289 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          left: widget._height / 50,
+                          left: widget._height / 25,
                           right: widget._height / 40,
                           top: widget._height / 50,
-                          bottom: widget._height / 70),
+                          bottom: widget._height / 25),
                       child: AnimatedProgressIndicator(
                         progress: progress,
                       ),
                     ),
                     Expanded(
                       child: Container(
-                        color: Colors.cyan,
+                        //color: Colors.cyan,
                         child: SingleChildScrollView(
+                          primary: false,
+                          
                           child: Column(
+                            
                             children: [
-                              AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: widget._width,
-                                height: container1Pressed
-                                    ? widget._height / 4
-                                    : widget._height / 10,
-                                padding: container1Hover
-                                    ? EdgeInsets.symmetric(
-                                        horizontal: widget._width / 150,
-                                        vertical: widget._height / 75,
-                                      )
-                                    : EdgeInsets.symmetric(
-                                        horizontal: widget._width / 100,
-                                        vertical: widget._height / 50,
-                                      ),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 250),
-                                  decoration: BoxDecoration(
-                                    color: container1Pressed
-                                        ? const Color.fromRGBO(0, 255, 149, 1)
-                                        : const Color.fromARGB(
-                                            255, 255, 69, 109),
-                                    borderRadius: BorderRadius.circular(10),
+                              
+                              IncidentItem(
+                                controller: controll1Container,
+                                title: 'CONTAINMENT',
+                                icon: Icons.security,
+                                checkVariableState: context.watch<IncidentButtonsCubit>().state.cointainer1Finished,
+                                widget: widget,
+                                containerPressed: context
+                                    .read<IncidentButtonsCubit>()
+                                    .state
+                                    .container1Pressed,
+                                checkboxColumn: [
+                                  CheckBoxAction(
+                                    title: 'Network Segmentation',
+                                    description:
+                                        'Implement network segmentation to isolate critical systems and contain the spread of security threats.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsCubit>()
+                                        .state
+                                        .container1Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsCubit>(),
+                                    id: 1,
                                   ),
-                                  child: LayoutBuilder(
-                                    builder: (context, constraints) {
-                                      var h = constraints.maxHeight;
-                                      var w = constraints.maxWidth;
-
-                                      return CreateIncidentButton(
-                                        height: h,
-                                        width: w,
-                                        containerIsPressed: container1Pressed,
-                                        title: 'CONTAIN',
-                                        icon: Icons.security_rounded,
-                                        button: IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              container1Pressed = container1Pressed ? false : true;
-                                            });
-                                            updateProgressIndicator(container1Pressed);
-                                          },
-                                          //icon: Icon(Icons.keyboard_arrow_down_sharp),
-                                          icon: Icon(Icons.delete),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title:
+                                        'Isolation of Compromised Devices',
+                                    description:
+                                        'Isolate compromised devices from the network to prevent further spread of security threats.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsCubit>()
+                                        .state
+                                        .container2Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsCubit>(),
+                                    id: 2,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Suspension of User Accounts',
+                                    description:
+                                        'Temporarily suspend user accounts associated with security incidents to contain potential risks.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsCubit>()
+                                        .state
+                                        .container3Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsCubit>(),
+                                    id: 3,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Application Quarantine Measures',
+                                    description:
+                                        'Implement quarantine measures for affected applications to prevent them from causing further harm.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsCubit>()
+                                        .state
+                                        .container4Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsCubit>(),
+                                    id: 4,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Traffic Filtering and Monitoring',
+                                    description:
+                                        'Enhance traffic filtering and monitoring mechanisms to quickly identify and contain suspicious network activities.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsCubit>()
+                                        .state
+                                        .container5Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsCubit>(),
+                                    id: 5,
+                                  ),
+                                  context.watch<IncidentButtonsCubit>().state.container1Checkbox == true ||
+                                  context.watch<IncidentButtonsCubit>().state.container2Checkbox == true ||
+                                  context.watch<IncidentButtonsCubit>().state.container3Checkbox == true ||
+                                  context.watch<IncidentButtonsCubit>().state.container4Checkbox == true ||
+                                  context.watch<IncidentButtonsCubit>().state.container5Checkbox == true
+                                      ? Column(
                                           children: [
                                             SizedBox(
-                                              height: widget._height / 80,
+                                              height: widget._height / 25,
                                             ),
-                                            CheckBoxAction(
-                                              title: 'Network Segmentation',
-                                              description:
-                                                  'Implement network segmentation to isolate critical systems and contain the spread of security threats.',
-                                            ),
-                                            SizedBox(
-                                              height: widget._height / 80,
-                                            ),
-                                            CheckBoxAction(
-                                              title:
-                                                  'Isolation of Compromised Devices',
-                                              description:
-                                                  'Isolate compromised devices from the network to prevent further spread of security threats.',
-                                            ),
-                                            SizedBox(
-                                              height: widget._height / 80,
-                                            ),
-                                            CheckBoxAction(
-                                              title:
-                                                  'Suspension of User Accounts',
-                                              description:
-                                                  'Temporarily suspend user accounts associated with security incidents to contain potential risks.',
-                                            ),
-                                            SizedBox(
-                                              height: widget._height / 80,
-                                            ),
-                                            CheckBoxAction(
-                                              title:
-                                                  'Application Quarantine Measures',
-                                              description:
-                                                  'Implement quarantine measures for affected applications to prevent them from causing further harm.',
-                                            ),
-                                            SizedBox(
-                                              height: widget._height / 80,
-                                            ),
-                                            CheckBoxAction(
-                                              title:
-                                                  'Traffic Filtering and Monitoring',
-                                              description:
-                                                  'Enhance traffic filtering and monitoring mechanisms to quickly identify and contain suspicious network activities.',
-                                            ),
-                                            SizedBox(
-                                              height: widget._height / 80,
-                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              child: FilledButton.tonal(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    context.read<IncidentButtonsCubit>().toggleContainerFinished();
+                                                    updateProgressIndicator(context.read<IncidentButtonsCubit>().state.cointainer1Finished);
 
-                                            //
+                                                    context.read<IncidentButtonsCubit>().state.cointainer1Finished ?
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            backgroundColor:
+                                                                const Color.fromARGB(255, 49, 49, 49),
+                                                            title: const Text(
+                                                              'The following actions were executed',
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w900,
+                                                                fontSize: 35,
+                                                              ),
+                                                            ),
+                                                            content: Container(
+                                                              height: 200,
+                                                              child: Column(
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                children: [
+                                                                
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Network Segmentation',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  
+                                                                  
+                                                                  
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Isolation of Compromised Devices',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Suspension of User Accounts',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Application Quarantine Measures',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Traffic Filtering and Monitoring',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            actions: [
+                                                              // FilledButton.tonal(
+                                                              //   style: const ButtonStyle(
+                                                              //     overlayColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 255, 255, 255)),
+                                                              //     backgroundColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 224, 224, 224)),
+                                                              //   ),
+                                                              //   onPressed: () {
+                                                              //     // openNewTab(
+                                                              //     //     'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                                              //   },
+                                                              //   child: const Text(
+                                                              //     'Download incident report',
+                                                              //     textAlign: TextAlign.center,
+                                                              //     style: TextStyle(
+                                                              //       color: Colors.black,
+                                                              //       fontFamily: 'Poppins',
+                                                              //       fontWeight: FontWeight.w900,
+                                                              //       fontSize: 20,
+                                                              //     ),
+                                                              //   ),
+                                                              // ),
+                                                              FilledButton.tonal(
+                                                                style: const ButtonStyle(
+                                                                  overlayColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 108, 122)),
+                                                                  backgroundColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 87, 99)),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.pop(context);
+                                                                  controll1Container.collapse();
+                                                                },
+                                                                child: const Text(
+                                                                  'Accept',
+                                                                  style: TextStyle(
+                                                                    color: Color.fromARGB(255, 255, 255, 255),
+                                                                    fontFamily: 'Poppins',
+                                                                    fontSize: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      )
+                                                      : null;
+                                                    }
+
+                                              
+                                                  );
+                                                },
+                                                style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStatePropertyAll(
+                                                            Colors.white)),
+                                                child: Text(
+                                                  'Contain',
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 56, 56, 56),
+                                                    fontFamily: 'Poppins-Bold',
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ],
-                                        ),
-                                      );
-                                    },
+                                        )
+                                      : Container(),
+                                  SizedBox(
+                                    height: widget._height / 25,
+                                  ),
+                                ],
+                              ),
+                              
+                              SizedBox(
+                                height: 10,
+                              ),
+
+                              IncidentItem(
+                                controller: controll2Container,
+                                title: 'ERADICATION',
+                                icon: Icons.delete,
+                                checkVariableState: context.watch<IncidentButtonsContainer2Cubit>().state.cointainer1Finished,
+                                widget: widget,
+                                containerPressed: context
+                                    .read<IncidentButtonsContainer2Cubit>()
+                                    .state
+                                    .container1Pressed,
+                                checkboxColumn: [
+                                  CheckBoxAction(
+                                    title: 'Enhanced Firewall Protection',
+                                    description:
+                                        'Upgrade and configure firewalls to provide enhanced protection against cyber threats.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer2Cubit>()
+                                        .state
+                                        .container1Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer2Cubit>(),
+                                    id: 1,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title:
+                                        'Implementation of Intrusion Detection Systems',
+                                    description:
+                                        'Deploy Intrusion Detection Systems to identify and respond to potential security breaches.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer2Cubit>()
+                                        .state
+                                        .container2Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer2Cubit>(),
+                                    id: 2,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Isolation of Compromised Devices',
+                                    description:
+                                        'Isolate compromised devices from the network to prevent further threats and attacks.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer2Cubit>()
+                                        .state
+                                        .container3Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer2Cubit>(),
+                                    id: 3,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Data Encryption Protocols',
+                                    description:
+                                        'Implement strong data encryption protocols to safeguard sensitive information.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer2Cubit>()
+                                        .state
+                                        .container4Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer2Cubit>(),
+                                    id: 4,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Regular Security Audits',
+                                    description:
+                                        'Conduct regular security audits to identify and address potential vulnerabilities.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer2Cubit>()
+                                        .state
+                                        .container5Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer2Cubit>(),
+                                    id: 5,
+                                  ),
+                                  context.watch<IncidentButtonsContainer2Cubit>().state.container1Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer2Cubit>().state.container2Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer2Cubit>().state.container3Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer2Cubit>().state.container4Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer2Cubit>().state.container5Checkbox == true
+                                      ? Column(
+                                          children: [
+                                            SizedBox(
+                                              height: widget._height / 25,
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              child: FilledButton.tonal(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    context.read<IncidentButtonsContainer2Cubit>().toggleContainerFinished();
+                                                    updateProgressIndicator(context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished);
+
+                                                    context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished ?
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            backgroundColor: const Color.fromARGB(255, 49, 49, 49),
+                                                            title: const Text(
+                                                              'The following actions were executed',
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w900,
+                                                                fontSize: 35,
+                                                              ),
+                                                            ),
+                                                            content: Container(
+                                                              height: 200,
+                                                              child: Column(
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                children: [
+                                                                
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Enhanced Firewall Protection',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  
+                                                                  
+                                                                  
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Implementation of Intrusion Detection Systems',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Isolation of Compromised Devices',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Data Encryption Protocols',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Regular Security Audits',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            actions: [
+                                                              // FilledButton.tonal(
+                                                              //   style: const ButtonStyle(
+                                                              //     overlayColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 255, 255, 255)),
+                                                              //     backgroundColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 224, 224, 224)),
+                                                              //   ),
+                                                              //   onPressed: () {
+                                                              //     // openNewTab(
+                                                              //     //     'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                                              //   },
+                                                              //   child: const Text(
+                                                              //     'Download incident report',
+                                                              //     textAlign: TextAlign.center,
+                                                              //     style: TextStyle(
+                                                              //       color: Colors.black,
+                                                              //       fontFamily: 'Poppins',
+                                                              //       fontWeight: FontWeight.w900,
+                                                              //       fontSize: 20,
+                                                              //     ),
+                                                              //   ),
+                                                              // ),
+                                                              FilledButton.tonal(
+                                                                style: const ButtonStyle(
+                                                                  overlayColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 108, 122)),
+                                                                  backgroundColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 87, 99)),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.pop(context);
+                                                                  controll2Container.collapse();
+                                                                },
+                                                                child: const Text(
+                                                                  'Accept',
+                                                                  style: TextStyle(
+                                                                    color: Color.fromARGB(255, 255, 255, 255),
+                                                                    fontFamily: 'Poppins',
+                                                                    fontSize: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      )
+                                                      : null;
+                                                    }
+
+                                              
+                                                  );
+                                                },
+                                                style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStatePropertyAll(
+                                                            Colors.white)),
+                                                child: Text(
+                                                  'Contain',
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 56, 56, 56),
+                                                    fontFamily: 'Poppins-Bold',
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                                  SizedBox(
+                                    height: widget._height / 25,
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(
+                                height: 10,
+                              ),                              
+
+                              IncidentItem(
+                                controller: controll3Container,
+                                title: 'RECOVERY',
+                                icon: Icons.verified,
+                                checkVariableState: context.watch<IncidentButtonsContainer3Cubit>().state.cointainer1Finished,
+                                widget: widget,
+                                containerPressed: context
+                                    .read<IncidentButtonsContainer3Cubit>()
+                                    .state
+                                    .container1Pressed,
+                                checkboxColumn: [
+                                  CheckBoxAction(
+                                    title: 'Data Backup and Recovery Plan',
+                                    description:
+                                        'Establish a comprehensive data backup and recovery plan to minimize data loss in case of a security incident.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer3Cubit>()
+                                        .state
+                                        .container1Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer3Cubit>(),
+                                    id: 1,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title:
+                                        'Incident Response Team Activation',
+                                    description:
+                                        'Activate an incident response team to quickly respond to and mitigate the impact of security incidents.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer3Cubit>()
+                                        .state
+                                        .container2Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer3Cubit>(),
+                                    id: 2,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'System Restoration Protocols',
+                                    description:
+                                        'Implement protocols for the systematic restoration of systems and services affected by security incidents.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer3Cubit>()
+                                        .state
+                                        .container3Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer3Cubit>(),
+                                    id: 3,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Communication and Notification Procedures',
+                                    description:
+                                        'Establish communication and notification procedures to keep stakeholders informed during the recovery process.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer3Cubit>()
+                                        .state
+                                        .container4Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer3Cubit>(),
+                                    id: 4,
+                                  ),
+                                  SizedBox(
+                                    height: widget._height / 80,
+                                  ),
+                                  CheckBoxAction(
+                                    title: 'Post-Incident Analysis',
+                                    description:
+                                        'Conduct a thorough analysis of security incidents to identify lessons learned and improve future incident response.',
+                                    checkVariableState: context
+                                        .watch<IncidentButtonsContainer3Cubit>()
+                                        .state
+                                        .container5Checkbox,
+                                    checkVariableMethods: context.watch<IncidentButtonsContainer3Cubit>(),
+                                    id: 5,
+                                  ),
+                                  context.watch<IncidentButtonsContainer3Cubit>().state.container1Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer3Cubit>().state.container2Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer3Cubit>().state.container3Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer3Cubit>().state.container4Checkbox == true ||
+                                  context.watch<IncidentButtonsContainer3Cubit>().state.container5Checkbox == true
+                                      ? Column(
+                                          children: [
+                                            SizedBox(
+                                              height: widget._height / 25,
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              child: FilledButton.tonal(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    context.read<IncidentButtonsContainer3Cubit>().toggleContainerFinished();
+                                                    updateProgressIndicator(context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished);
+
+                                                    context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished ?
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            backgroundColor:
+                                                                const Color.fromARGB(255, 49, 49, 49),
+                                                            title: const Text(
+                                                              'Security incident 54SD-65DE54R-001 \n was successfully handled',
+                                                              textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Color.fromARGB(255, 0, 199, 116),
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w900,
+                                                                fontSize: 35,
+                                                              ),
+                                                            ),
+                                                            
+                                                            actions: [
+                                                              FilledButton.tonal(
+                                                                style: const ButtonStyle(
+                                                                  overlayColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 255, 255, 255)),
+                                                                  backgroundColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 224, 224, 224)),
+                                                                ),
+                                                                onPressed: () {
+                                                                  openNewTab(
+                                                                      'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                                                },
+                                                                child: const Text(
+                                                                  'Download incident report',
+                                                                  textAlign: TextAlign.center,
+                                                                  style: TextStyle(
+                                                                    color: Colors.black,
+                                                                    fontFamily: 'Poppins',
+                                                                    fontWeight: FontWeight.w900,
+                                                                    fontSize: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              FilledButton.tonal(
+                                                                style: const ButtonStyle(
+                                                                  overlayColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 108, 122)),
+                                                                  backgroundColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 87, 99)),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.pop(context);
+                                                                  controll3Container.collapse();
+                                                                },
+                                                                child: const Text(
+                                                                  'Accept',
+                                                                  style: TextStyle(
+                                                                    color: Color.fromARGB(255, 255, 255, 255),
+                                                                    fontFamily: 'Poppins',
+                                                                    fontSize: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      )
+                                                      : null;
+
+                                                                                                          showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            backgroundColor:
+                                                                const Color.fromARGB(255, 49, 49, 49),
+                                                            title: const Text(
+                                                              'The following actions were executed',
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontFamily: 'Poppins',
+                                                                fontWeight: FontWeight.w900,
+                                                                fontSize: 35,
+                                                              ),
+                                                            ),
+                                                            content: Container(
+                                                              height: 200,
+                                                              child: Column(
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                children: [
+                                                                
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Data Backup and Recovery Plan',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  
+                                                                  
+                                                                  
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Incident Response Team Activation',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'System Restoration Protocols',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Communication and Notification Procedures',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                  Container(
+                                                                    //color: Colors.red,
+                                                                    alignment: Alignment.center,
+                                                                    child:  Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                      children: [
+                                                                        Text(
+                                                                          'Post-Incident Analysis',
+                                                                          style: TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                              color:
+                                                                                  Color.fromARGB(255, 0, 199, 116)),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                      Expanded(
+                                                                          child: Container(
+                                                                            height: 2,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: 40,
+                                                                        ),
+                                                                        Text(
+                                                                          'Success',
+                                                                          style: TextStyle(
+                                                                            fontSize: 25,
+                                                                            color: Color.fromARGB(255, 0, 199, 116),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            actions: [
+                                                              // FilledButton.tonal(
+                                                              //   style: const ButtonStyle(
+                                                              //     overlayColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 255, 255, 255)),
+                                                              //     backgroundColor: MaterialStatePropertyAll(
+                                                              //         Color.fromARGB(255, 224, 224, 224)),
+                                                              //   ),
+                                                              //   onPressed: () {
+                                                              //     // openNewTab(
+                                                              //     //     'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                                              //   },
+                                                              //   child: const Text(
+                                                              //     'Download incident report',
+                                                              //     textAlign: TextAlign.center,
+                                                              //     style: TextStyle(
+                                                              //       color: Colors.black,
+                                                              //       fontFamily: 'Poppins',
+                                                              //       fontWeight: FontWeight.w900,
+                                                              //       fontSize: 20,
+                                                              //     ),
+                                                              //   ),
+                                                              // ),
+                                                              FilledButton.tonal(
+                                                                style: const ButtonStyle(
+                                                                  overlayColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 108, 122)),
+                                                                  backgroundColor: MaterialStatePropertyAll(
+                                                                      Color.fromARGB(255, 0, 87, 99)),
+                                                                ),
+                                                                onPressed: () {
+                                                                  Navigator.pop(context);
+                                                                  controll3Container.collapse();
+                                                                },
+                                                                child: const Text(
+                                                                  'Accept',
+                                                                  style: TextStyle(
+                                                                    color: Color.fromARGB(255, 255, 255, 255),
+                                                                    fontFamily: 'Poppins',
+                                                                    fontSize: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+
+                                                    }
+
+                                                    
+                                              
+                                                  );
+                                                },
+                                                style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStatePropertyAll(
+                                                            Colors.white)),
+                                                child: Text(
+                                                  'Contain',
+                                                  style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 56, 56, 56),
+                                                    fontFamily: 'Poppins-Bold',
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
+                                  SizedBox(
+                                    height: widget._height / 25,
+                                  ),
+                                ],
+                              ),
+
+                              context.read<IncidentButtonsCubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer2Cubit>().state.cointainer1Finished == true && context.read<IncidentButtonsContainer3Cubit>().state.cointainer1Finished == true 
+                              ?
+                              Container(
+                                margin: EdgeInsets.only(
+                                  left: widget._height / 25,
+                                  right: widget._height / 40,
+                                  top: widget._height / 60,
+                                  bottom: widget._height / 60),
+                                width: double.infinity,
+                                child: FilledButton.tonal(
+                                  style: const ButtonStyle(
+                                    overlayColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 255, 255, 255)),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        Color.fromARGB(255, 224, 224, 224)),
+                                  ),
+                                  onPressed: () {
+                                    openNewTab(
+                                        'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                                  },
+                                  child: const Text(
+                                    'Download incident report',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: widget._width,
-                                height: widget._height,
-                                // color: const Color.fromARGB(
-                                //   166,
-                                //   33,
-                                //   149,
-                                //   243,
-                                // ),
-                                padding: container2Hover
-                                    ? EdgeInsets.symmetric(
-                                        horizontal: widget._width / 150,
-                                        vertical: widget._height / 75,
-                                      )
-                                    : EdgeInsets.symmetric(
-                                        horizontal: widget._width / 100,
-                                        vertical: widget._height / 50,
-                                      ),
-                                child: InkWell(
-                                  onHover: (value) {
-                                    setState(() {
-                                      container2Hover =
-                                          container2Hover ? false : true;
-                                    });
-                                  },
-                                  onTap: () {
-                                    setState(() {
-                                      container2Pressed =
-                                          container2Pressed ? false : true;
-                                    });
-
-                                    updateProgressIndicator(container2Pressed);
-                                  },
-                                  child: AnimatedContainer(
-                                    duration: const Duration(milliseconds: 250),
-                                    decoration: BoxDecoration(
-                                      color: container2Pressed
-                                          ? const Color.fromRGBO(0, 255, 149, 1)
-                                          : const Color.fromARGB(
-                                              255, 255, 69, 109),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: LayoutBuilder(
-                                        builder: (context, constraints) {
-                                      var h = constraints.maxHeight;
-                                      var w = constraints.maxWidth;
-
-                                      return CreateIncidentButton(
-                                        height: h,
-                                        width: w,
-                                        containerIsPressed: container2Pressed,
-                                        icon: Icons.delete,
-                                        title: 'ERADICATE',
-                                        button: IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              container1Pressed =
-                                                  container1Pressed
-                                                      ? false
-                                                      : true;
-                                            });
-                                            updateProgressIndicator(
-                                                container1Pressed);
-                                          },
-                                          icon: Icon(Icons.delete),
-                                        ),
-                                        child: Text('data'),
-                                        // description:
-                                        //     'Actions are being taken to completely eliminate the threat and its effects, ensuring thorough cleansing and full restoration of the systems.',
-                                      );
-                                    }),
-                                  ),
-                                ),
-                              ),
-                              AnimatedContainer(
-                                duration: const Duration(milliseconds: 250),
-                                width: widget._width,
-                                height: widget._height,
-                                // color: const Color.fromARGB(
-                                //   166,
-                                //   33,
-                                //   149,
-                                //   243,
-                                // ),
-                                padding: container3Hover
-                                    ? EdgeInsets.symmetric(
-                                        horizontal: widget._width / 150,
-                                        vertical: widget._height / 75,
-                                      )
-                                    : EdgeInsets.symmetric(
-                                        horizontal: widget._width / 100,
-                                        vertical: widget._height / 50,
-                                      ),
-                                child: InkWell(
-                                  onHover: (value) {
-                                    setState(() {
-                                      container3Hover =
-                                          container3Hover ? false : true;
-                                    });
-                                  },
-                                  onTap: () {
-                                    setState(() {
-                                      container3Pressed =
-                                          container3Pressed ? false : true;
-                                    });
-
-                                    updateProgressIndicator(container3Pressed);
-                                  },
-                                  child: AnimatedContainer(
-                                    duration: const Duration(milliseconds: 250),
-                                    decoration: BoxDecoration(
-                                      color: container3Pressed
-                                          ? const Color.fromRGBO(0, 255, 149, 1)
-                                          : const Color.fromARGB(
-                                              255, 255, 69, 109),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: LayoutBuilder(
-                                      builder: (context, constraints) {
-                                        var h = constraints.maxHeight;
-                                        var w = constraints.maxWidth;
-
-                                        return CreateIncidentButton(
-                                          height: h,
-                                          width: w,
-                                          containerIsPressed: container3Pressed,
-                                          icon: Icons.verified,
-                                          title: 'RECOVER',
-                                          child: Text('data'),
-                                          button: IconButton(
-                                            onPressed: () {
-                                              setState(() {
-                                                container1Pressed =
-                                                    container1Pressed
-                                                        ? false
-                                                        : true;
-                                              });
-                                              updateProgressIndicator(
-                                                  container1Pressed);
-                                            },
-                                            icon: Icon(Icons.delete),
-                                          ),
-                                          // description:
-                                          //     'Affected systems and data are being restored, corrective measures implemented, and security strengthened.',
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              )
+                              : Container()
                             ],
                           ),
                         ),
@@ -1453,25 +2343,102 @@ class _MissionControlPanelState extends State<MissionControlPanel> {
   }
 }
 
+class IncidentItem extends StatelessWidget {
+  const IncidentItem({
+    super.key,
+    required this.widget,
+    required this.containerPressed,
+    required this.checkboxColumn,
+    required this.checkVariableState,
+    required this.title,
+    required this.icon,
+    required this.controller,
+  });
+
+  final MissionControlPanel widget;
+  final bool checkVariableState;
+  final bool containerPressed;
+  final List<Widget> checkboxColumn;
+  final String title;
+  final IconData icon;
+  final ExpansionTileController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      width: widget._width,
+      margin: EdgeInsets.only(
+          left: widget._height / 25,
+          right: widget._height / 40,
+          //top: widget._height / 50,
+          bottom: widget._height / 70),
+      duration: const Duration(milliseconds: 250),
+      decoration: BoxDecoration(
+        color:
+            checkVariableState
+            ? const Color.fromRGBO(0, 255, 149, 1)
+            :
+            const Color.fromARGB(255, 255, 69, 109),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ExpansionTile( 
+          
+          //controller: controller,
+          leading: Container(
+            child: Icon(
+              icon,
+              color: checkVariableState ? Color.fromRGBO(0, 75, 44, 1) : Color.fromARGB(255, 104, 0, 22),
+              size: 50,
+            ),
+          ),
+          title: Container(
+            //color: Colors.cyan,
+            alignment: Alignment.centerLeft,
+            height: 70,
+            child: Text(
+              title,
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                color: checkVariableState ? Color.fromRGBO(0, 75, 44, 1) : Color.fromARGB(255, 104, 0, 22),
+                fontFamily: 'Poppins-Bold',
+                fontSize: widget._height / 25,
+              ),
+            ),
+          ),
+          shape: Border.all(
+            color: Colors.transparent,
+            width: 0,
+          ),
+          iconColor: Color.fromARGB(255, 70, 70, 70),
+          collapsedIconColor: Color.fromARGB(255, 70, 70, 70),
+          tilePadding: EdgeInsets.only(left: 15, right: 39, top: 10, bottom: 10),
+          childrenPadding: EdgeInsets.symmetric(horizontal: 20),
+          children: checkboxColumn),
+    );
+  }
+}
+
 class CheckBoxAction extends StatefulWidget {
   const CheckBoxAction({
     required this.title,
     required this.description,
-    this.lastfield = false,
+    required this.checkVariableState,
+    required this.checkVariableMethods,
+    required this.id,
     super.key,
   });
 
-  final bool lastfield;
+  final bool checkVariableState;
+  final checkVariableMethods;
   final String title;
   final String description;
+  final int id;
 
   @override
   State<CheckBoxAction> createState() => _CheckBoxActionState();
 }
 
 class _CheckBoxActionState extends State<CheckBoxAction> {
-  bool active = false;
-
   late ConfettiController _centerController;
   bool downloadCSV = false;
 
@@ -1491,20 +2458,17 @@ class _CheckBoxActionState extends State<CheckBoxAction> {
     super.dispose();
   }
 
-  static openNewTab(String setUrl) {
-    return html.window.open(setUrl, 'Download');
-  }
-
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: const Color.fromARGB(255, 70, 70, 70),
       ),
-      margin: const EdgeInsets.only(right: 27),
+      //margin: const EdgeInsets.only(right: 27),
       child: Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(15),
         child: Column(
           children: [
             Row(
@@ -1527,140 +2491,142 @@ class _CheckBoxActionState extends State<CheckBoxAction> {
                       Color.fromARGB(28, 0, 0, 0)),
                   side: const BorderSide(
                       width: 2, color: Color.fromARGB(255, 214, 54, 102)),
-                  value: active,
+                  value: widget.checkVariableState,
                   onChanged: (value) {
                     setState(() {
-                      active = !active;
+                      widget.checkVariableMethods.toggleContainerCheckbox(widget.id);
+                      print(widget.checkVariableState);
+                     
                     });
 
-                    if (widget.lastfield) {
-                      if (active) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 49, 49, 49),
-                              title: const Text(
-                                'Threat successfully eradicated!',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 35,
-                                ),
-                              ),
-                              content: Container(
-                                height: 170,
-                                child: Column(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: ConfettiWidget(
-                                        confettiController: _centerController,
-                                        blastDirection: 180,
-                                        maxBlastForce: 5,
-                                        minBlastForce: 1,
-                                        emissionFrequency: 0.001,
+                    // if (widget.lastfield) {
+                    //   if (active) {
+                    //     showDialog(
+                    //       context: context,
+                    //       builder: (context) {
+                    //         return AlertDialog(
+                    //           backgroundColor:
+                    //               const Color.fromARGB(255, 49, 49, 49),
+                    //           title: const Text(
+                    //             'Threat successfully eradicated!',
+                    //             style: TextStyle(
+                    //               color: Colors.white,
+                    //               fontFamily: 'Poppins',
+                    //               fontWeight: FontWeight.w900,
+                    //               fontSize: 35,
+                    //             ),
+                    //           ),
+                    //           content: Container(
+                    //             height: 170,
+                    //             child: Column(
+                    //               children: [
+                    //                 Align(
+                    //                   alignment: Alignment.center,
+                    //                   child: ConfettiWidget(
+                    //                     confettiController: _centerController,
+                    //                     blastDirection: 180,
+                    //                     maxBlastForce: 5,
+                    //                     minBlastForce: 1,
+                    //                     emissionFrequency: 0.001,
 
-                                        // 10 paticles will pop-up at a time
-                                        numberOfParticles: 5,
+                    //                     // 10 paticles will pop-up at a time
+                    //                     numberOfParticles: 5,
 
-                                        // particles will pop-up
-                                        gravity: 0,
-                                      ),
-                                    ),
-                                    const Text(
-                                      '11 users',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
-                                          color:
-                                              Color.fromARGB(255, 0, 199, 116)),
-                                    ),
-                                    const Text(
-                                      'Successfully blocked',
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        color: Color.fromARGB(255, 0, 199, 116),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    const Text(
-                                      '191 shares',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
-                                          color:
-                                              Color.fromARGB(255, 0, 199, 116)),
-                                    ),
-                                    const Text(
-                                      'Successfully arrested',
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        color: Color.fromARGB(255, 0, 199, 116),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              actions: [
-                                FilledButton.tonal(
-                                  style: const ButtonStyle(
-                                    overlayColor: MaterialStatePropertyAll(
-                                        Color.fromARGB(255, 255, 255, 255)),
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        Color.fromARGB(255, 224, 224, 224)),
-                                  ),
-                                  onPressed: () {
-                                    openNewTab(
-                                        'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
-                                  },
-                                  child: const Text(
-                                    'Download incident report',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                                FilledButton.tonal(
-                                  style: const ButtonStyle(
-                                    overlayColor: MaterialStatePropertyAll(
-                                        Color.fromARGB(255, 0, 108, 122)),
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        Color.fromARGB(255, 0, 87, 99)),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    'Accept',
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      fontFamily: 'Poppins',
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
+                    //                     // particles will pop-up
+                    //                     gravity: 0,
+                    //                   ),
+                    //                 ),
+                    //                 const Text(
+                    //                   '11 users',
+                    //                   style: TextStyle(
+                    //                       fontWeight: FontWeight.bold,
+                    //                       fontSize: 30,
+                    //                       color:
+                    //                           Color.fromARGB(255, 0, 199, 116)),
+                    //                 ),
+                    //                 const Text(
+                    //                   'Successfully blocked',
+                    //                   style: TextStyle(
+                    //                     fontSize: 25,
+                    //                     color: Color.fromARGB(255, 0, 199, 116),
+                    //                   ),
+                    //                 ),
+                    //                 const SizedBox(
+                    //                   height: 10,
+                    //                 ),
+                    //                 const Text(
+                    //                   '191 shares',
+                    //                   style: TextStyle(
+                    //                       fontWeight: FontWeight.bold,
+                    //                       fontSize: 30,
+                    //                       color:
+                    //                           Color.fromARGB(255, 0, 199, 116)),
+                    //                 ),
+                    //                 const Text(
+                    //                   'Successfully arrested',
+                    //                   style: TextStyle(
+                    //                     fontSize: 25,
+                    //                     color: Color.fromARGB(255, 0, 199, 116),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //           ),
+                    //           actions: [
+                    //             FilledButton.tonal(
+                    //               style: const ButtonStyle(
+                    //                 overlayColor: MaterialStatePropertyAll(
+                    //                     Color.fromARGB(255, 255, 255, 255)),
+                    //                 backgroundColor: MaterialStatePropertyAll(
+                    //                     Color.fromARGB(255, 224, 224, 224)),
+                    //               ),
+                    //               onPressed: () {
+                    //                 openNewTab(
+                    //                     'https://drive.google.com/uc?export=download&id=1tV8NRA5xUqK2-qmLHkggG-mgiHqXf0ia');
+                    //               },
+                    //               child: const Text(
+                    //                 'Download incident report',
+                    //                 textAlign: TextAlign.center,
+                    //                 style: TextStyle(
+                    //                   color: Colors.black,
+                    //                   fontFamily: 'Poppins',
+                    //                   fontWeight: FontWeight.w900,
+                    //                   fontSize: 20,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //             FilledButton.tonal(
+                    //               style: const ButtonStyle(
+                    //                 overlayColor: MaterialStatePropertyAll(
+                    //                     Color.fromARGB(255, 0, 108, 122)),
+                    //                 backgroundColor: MaterialStatePropertyAll(
+                    //                     Color.fromARGB(255, 0, 87, 99)),
+                    //               ),
+                    //               onPressed: () {
+                    //                 Navigator.pop(context);
+                    //               },
+                    //               child: const Text(
+                    //                 'Accept',
+                    //                 style: TextStyle(
+                    //                   color: Color.fromARGB(255, 255, 255, 255),
+                    //                   fontFamily: 'Poppins',
+                    //                   fontSize: 20,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         );
+                    //       },
+                    //     );
+                    //   }
 
-                      _centerController.play();
-                    }
+                    //   _centerController.play();
+                    // }
                   },
                 ),
               ],
             ),
-            active
+            widget.checkVariableState
                 ? Container(
                     color: const Color.fromARGB(255, 70, 70, 70),
                     alignment: Alignment.centerLeft,
@@ -1713,7 +2679,7 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 3),
       vsync: this,
     );
     final colorTween = TweenSequence([
@@ -1757,105 +2723,6 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
         value: _curveAnimation.value,
         valueColor: _colorAnimation,
         backgroundColor: _colorAnimation.value?.withOpacity(0.4),
-      ),
-    );
-  }
-}
-
-class CreateIncidentButton extends StatelessWidget {
-  const CreateIncidentButton(
-      {super.key,
-      required this.height,
-      required this.width,
-      required this.containerIsPressed,
-      required this.title,
-      required this.child,
-      required this.icon,
-      required this.button});
-
-  final double height;
-  final double width;
-  final String title;
-  final Widget child;
-  final IconData icon;
-  final bool containerIsPressed;
-  final Widget button;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(height / 10),
-      //color: Colors.blue,
-      child: Stack(
-        children: [
-          Positioned(
-              right: 1,
-              child: containerIsPressed
-                  ? const Icon(
-                      Icons.check,
-                      size: 30,
-                      color: Color.fromARGB(255, 0, 100, 50),
-                    )
-                  : const Icon(
-                      Icons.warning_amber_rounded,
-                      size: 30,
-                      color: Color.fromARGB(255, 100, 0, 13),
-                    )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  //color: Colors.green,
-                  height: height,
-                  alignment: Alignment.center,
-                  child: Icon(
-                    icon,
-                    size: height / 1.2,
-                    color: containerIsPressed
-                        ? const Color.fromRGBO(0, 97, 57, 1)
-                        : const Color.fromARGB(255, 104, 0, 22),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 5,
-                child: containerIsPressed
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            title,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              color: containerIsPressed
-                                  ? const Color.fromRGBO(0, 97, 57, 1)
-                                  : const Color.fromARGB(255, 104, 0, 22),
-                              fontFamily: 'Poppins-Bold',
-                              fontSize: width / 35,
-                            ),
-                          ),
-                          child
-                        ],
-                      )
-                    : Text(
-                        title,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: containerIsPressed
-                              ? const Color.fromRGBO(0, 97, 57, 1)
-                              : const Color.fromARGB(255, 104, 0, 22),
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: width / 25,
-                        ),
-                      ),
-              ),
-              button
-            ],
-          ),
-        ],
       ),
     );
   }

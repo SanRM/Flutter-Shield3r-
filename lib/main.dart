@@ -17,6 +17,15 @@ class BlocProviders extends StatelessWidget {
       BlocProvider<ButtonStateCubit>(
         create: (context) => ButtonStateCubit(),
       ),
+      BlocProvider<IncidentButtonsCubit>(
+        create: (context) => IncidentButtonsCubit(),
+      ),
+      BlocProvider<IncidentButtonsContainer2Cubit>(
+        create: (context) => IncidentButtonsContainer2Cubit(),
+      ),
+      BlocProvider<IncidentButtonsContainer3Cubit>(
+        create: (context) => IncidentButtonsContainer3Cubit(),
+      ),
     ], child: const MyApp());
   }
 }
